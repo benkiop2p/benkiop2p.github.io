@@ -5,6 +5,7 @@
     <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp2/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <script src="https://awesome-table.com/AwesomeTableInclude.js"></script>
+    <script type='text/javascript' src='/js/sheetsee.js'></script>
   </head>
   <body>
     Benkio Prueba 1
@@ -17,7 +18,7 @@
           <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScrRsBEZbcPJXKjMBVuah-LuPNkBwzTEJ-CYxKHtpTkwte49A/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
         </div>
           <div class="tablaPizarra">
-            <table id="tPizarraa">
+            <table id="tPizarra" class="table table-condensed table-striped"></table>
           			<thead>
           				<tr>
           					<th>Nombre_Actividad</th>
@@ -35,6 +36,18 @@
           <script type="text/javascript" src="js/jquery.js"></script>
           <script type="text/javascript" src="js/llenarTabla.js"></script>
 
+
+          <table id="tPizarraa" class="table table-condensed table-striped"></table>
+          <script type="text/javascript">
+          var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1Wiqvmn1wVnrGkX-cbF6nEq0x0Q-EcKgrH733L4wszKk/edit#gid=0';
+          $('#statistics').sheetrock({
+            url: mySpreadsheet
+          });
+          </script>
+          <div id='Pagination' currentPage class='table-pagination'>
+            Showing page {{currentPage}} of {{totalPages}}
+            <a class='pagination-pre'>Previous</a><a class='pagination-next'>Next</a>
+          </div>
 
 
 
@@ -55,9 +68,39 @@
         var spreadsheetID = "1Wiqvmn1wVnrGkX-cbF6nEq0x0Q-EcKgrH733L4wszKk";
         var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
         $.getJSON(url, function(data) {
-          var entry = data.feed.entry;
-          $(entry).each(function(){
-            $('.results').prepend('<h2>'+this.gsx$Nombre.$t+'</h2><p>'+this.gsx$Nombre_Actividad.$t+'</p>');
-          });
-        });
+
+  // set global html variable
+  var html = '';
+
+  // build table headings
+  html += '<table cellpadding=10 cellspacing=0 border=1>';
+  html += '<tr>';
+  html += '<th>Nombre_Actividad</th>';
+  html += '<th>Descripción</th>';
+  html += '<th>Categoría</th>';
+  html += '<th>Tiempo aproximado</th>';
+  html += '<th>Facilitador(a)</th>';
+  html += '</tr>';
+
+  // loop to build html output for each row
+  var entry = data.feed.entry;
+  /**
+  ** Change to descending order
+  ** for (var i = entry.length - 1; i >= 0; i -= 1) {
+   */
+  for (var i = 0; i < entry.length; i++) {
+    html += '<tr>';
+    html += '<td>' + entry[i]['gsx$studentname']['$t'] + '</td>';
+    html += '<td>' + entry[i]['gsx$gender']['$t'] + '</td>';
+    html += '<td>' + entry[i]['gsx$classlevel']['$t'] + '</td>';
+    html += '<td>' + entry[i]['gsx$homestate']['$t'] + '</td>';
+    html += '<td>' + entry[i]['gsx$major']['$t'] + '</td>';
+    html += '<td>' + entry[i]['gsx$extracurricularactivity']['$t'] + '</td>';
+    html += '</tr>';
+  }
+  html += '</table>';
+
+  // output html
+  $('.console').html(html);
+});
         </script>
