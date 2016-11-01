@@ -25,7 +25,7 @@ function llenarTabla() {
                             }).append(
                                 $('<img>', {
                                     'class': 'activator',
-                                    'src': 'http://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-903ea3cb.jpg'
+                                    'src': 'img/bnkdflt.jpeg'
                                 })),
                             $('<div>', {
                                 'class': 'card-content'
