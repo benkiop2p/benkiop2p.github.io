@@ -37,8 +37,12 @@ function llenarTabla() {
                                     'class': 'material-icons right'
                                 }).text('more_vert')),
                                 $('<p>', {
+                                    'id': 'description' + i
+                                }),
+                                $('<p>', {
                                     'id': 'category' + i
-                                })),
+                                })
+                              ),
                             $('<div>', {
                                 'class': 'card-reveal'
                             }).append(
@@ -49,9 +53,9 @@ function llenarTabla() {
                                     'class': 'material-icons right'
                                 }).text('close')),
                                 $('<p>', {
-                                    'id': 'description' + i
+                                    'id': 'facilitador' + i
                                 }), $('<p>', {
-                                    'id': 'description' + i
+                                    'id': 'description2' + i
                                 }))
                         )))
 
@@ -59,6 +63,10 @@ function llenarTabla() {
                 $("#cardtitle" + i).append(response[i]['Nombre_Actividad']);
                 $("#description" + i).append(response[i]['Descripción']);
                 $("#category" + i).append(response[i]['Categoría']);
+                $("#cardtitle2" + i).append(response[i]['Nombre_Actividad']);
+                $("#facilitador" + i).append("Facilitador(a): "+response[i]['Nombre']);
+                $("#description2" + i).append(response[i]['Descripción']);
+
             }
         },
         error: function(request, error) {
