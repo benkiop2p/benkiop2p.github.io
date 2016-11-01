@@ -48,24 +48,23 @@ function llenarTabla() {
                             }).append(
                                 $('<span>', {
                                     'class': 'card-title grey-text text-darken-4',
-                                    'id': 'cardtitle2' + i
+                                    'id': 'cardtitle_' + i
                                 }).append($('<i>', {
                                     'class': 'material-icons right'
                                 }).text('close')),
                                 $('<p>', {
                                     'id': 'facilitador' + i
                                 }), $('<p>', {
-                                    'id': 'description2' + i
+                                    'id': 'description_' + i
                                 }))
                         )))
-
                 $('#tPizarra').append(card);
                 $("#cardtitle" + i).append(response[i]['Nombre_Actividad']);
                 $("#description" + i).append(response[i]['Descripción']);
                 $("#category" + i).append(response[i]['Categoría']);
-                $("#cardtitle2" + i).append(response[i]['Nombre_Actividad']);
+                $("#cardtitle_" + i).append(response[i]['Nombre_Actividad']);
                 $("#facilitador" + i).append("Facilitador(a): "+response[i]['Nombre']);
-                $("#description2" + i).append(response[i]['Descripción']);
+                $("#description_" + i).append(response[i]['Descripción']);
 
             }
         },
