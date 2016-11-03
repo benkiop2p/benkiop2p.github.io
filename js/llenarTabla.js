@@ -12,9 +12,6 @@ function llenarTabla() {
         success: function(response) {
             for (var i = 0; i < response.length; i++) {
                 var card = $('<div>', {
-                    'class': 'row'
-                }).append(
-                    $('<div>', {
                         'class': 'col'
                     }).append(
                         $('<div>', {
@@ -57,7 +54,7 @@ function llenarTabla() {
                                 }), $('<p>', {
                                     'id': 'description_' + i
                                 }))
-                        )))
+                        ))
                 $('#tPizarra').append(card);
                 $("#cardtitle" + i).append(response[i]['Nombre_Actividad']);
                 $("#description" + i).append(response[i]['Descripción']);
