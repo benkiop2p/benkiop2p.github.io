@@ -12,7 +12,7 @@ function llenarTabla() {
         success: function(response) {
             for (var i = 0; i < response.length; i++) {
                 var card = $('<div>', {
-                        'class': 'col'
+                        'class': 'col s6'
                     }).append(
                         $('<div>', {
                             'class': 'card'
