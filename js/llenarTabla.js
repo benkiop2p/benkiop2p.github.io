@@ -50,19 +50,60 @@ function llenarTabla() {
                                     'class': 'material-icons right'
                                 }).text('close')),
                                 $('<p>', {
-                                    'id': 'facilitador' + i
-                                }), $('<p>', {
                                     'id': 'description_' + i
-                                }))
+                                }).append($('<i>', {
+                                    'class': 'material-icons right'
+                                }).text('subject')),
+                                $('<p>', {
+                                    'id': 'requerimientos' + i
+                                }).append($('<i>', {
+                                    'class': 'material-icons right'
+                                }).text('list')),
+                                $('<p>', {
+                                    'id': 'tiempo' + i
+                                }).append($('<i>', {
+                                    'class': 'material-icons right'
+                                }).text('timelapse')),
+                                $('<p>', {
+                                    'id': 'lugar' + i
+                                }).append($('<i>', {
+                                    'class': 'material-icons right'
+                                }).text('place')),
+                                $('<p>', {
+                                    'id': 'fechat' + i
+                                }).append($('<i>', {
+                                    'class': 'material-icons right'
+                                }).text('date_range')),
+                                $('<p>', {
+                                    'id': 'facilitador' + i
+                                }).append($('<i>', {
+                                    'class': 'material-icons right'
+                                }).text('sentiment_satisfied')),
+                                $('<p>', {
+                                    'id': 'contactof' + i
+                                }).append($('<i>', {
+                                    'class': 'material-icons right'
+                                }).text('contact_phone')),
+                                $('<p>', {
+                                    'id': 'areadisponible' + i
+                                }).append($('<i>', {
+                                    'class': 'material-icons right'
+                                }).text('gps_fixed'))
+                              )
                         ))
                 $('#tPizarra').append(card);
                 $("#cardtitle" + i).append(response[i]['Nombre_Actividad']);
                 $("#description" + i).append(response[i]['Descripción']);
                 $("#category" + i).append(response[i]['Categoría']);
                 $("#cardtitle_" + i).append(response[i]['Nombre_Actividad']);
-                $("#facilitador" + i).append("Facilitador(a): "+response[i]['Nombre']);
                 $("#description_" + i).append(response[i]['Descripción']);
-
+                $("#requerimientos" + i).append(response[i]['Requerimientos']);
+                $("#tiempo" + i).append(response[i]['Tiempo aproximado']);
+                $("#fechat" + i).append(response[i]['Fecha Tentativa']);
+                $("#lugar" + i).append(response[i]['Lugar']);
+                $("#facilitador" + i).append("Facilitador(a): "+response[i]['Nombre']);
+                $("#contacto" + i).append(response[i]['Contacto']);
+                $("#areadisponible" + i).append(response[i]['Lugar de residencia-trabajo']);
             }
         },
         error: function(request, error) {
