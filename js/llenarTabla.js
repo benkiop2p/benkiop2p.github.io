@@ -15,7 +15,7 @@ function llenarTabla() {
                     'class': 'row'
                 }).append(
                     $('<div>', {
-                        'class': 'col s12'
+                        'class': 'col'
                     }).append(
                         $('<div>', {
                             'class': 'card'
