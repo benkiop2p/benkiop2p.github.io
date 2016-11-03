@@ -15,10 +15,10 @@ function llenarTabla() {
                     'class': 'row'
                 }).append(
                     $('<div>', {
-                        'class': 'col s6'
+                        'class': 'col s12'
                     }).append(
                         $('<div>', {
-                            'class': 'card col s6'
+                            'class': 'card'
                         }).append(
                             $('<div>', {
                                 'class': 'card-image waves-effect waves-block waves-light'
