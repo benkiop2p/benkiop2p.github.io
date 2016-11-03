@@ -18,7 +18,7 @@ function llenarTabla() {
                         'class': 'col s6'
                     }).append(
                         $('<div>', {
-                            'class': 'card'
+                            'class': 'card col s6'
                         }).append(
                             $('<div>', {
                                 'class': 'card-image waves-effect waves-block waves-light'
