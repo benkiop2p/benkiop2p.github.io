@@ -92,18 +92,18 @@ function llenarTabla() {
                               )
                         ))
                 $('#tPizarra').append(card);
-                $("#cardtitle" + i).append("<br>"+response[i]['Nombre_Actividad']+"</br>");
+                $("#cardtitle" + i).append("<br>"+response[i]['Nombre_Actividad']);
                 $("#description" + i).append(response[i]['Descripción']);
-                $("#category" + i).append("<br>"+response[i]['Categoría']+"</br>");
-                $("#cardtitle_" + i).append("<br>"+response[i]['Nombre_Actividad']+"</br>");
-                $("#description_" + i).append("<br>Descripción:</br> "+response[i]['Descripción']);
-                $("#requerimientos" + i).append("<br>Requerimientos:</br> "+response[i]['Requerimientos']);
-                $("#tiempo" + i).append("<br>Tiempo Aproximado:</br> "+response[i]['Tiempo aproximado']);
-                $("#fechat" + i).append("<br>Fecha:</br> "+response[i]['Fecha Tentativa']);
+                $("#category" + i).append("<br>"+response[i]['Categoría']);
+                $("#cardtitle_" + i).append("<br>"+response[i]['Nombre_Actividad']);
+                $("#description_" + i).append("<br>Descripción: "+response[i]['Descripción']);
+                $("#requerimientos" + i).append("<br>Requerimientos: "+response[i]['Requerimientos']);
+                $("#tiempo" + i).append("<br>Tiempo Aproximado: "+response[i]['Tiempo aproximado']);
+                $("#fechat" + i).append("<br>Fecha: "+response[i]['Fecha Tentativa']);
                 $("#lugar" + i).append("<br>Lugar: "+response[i]['Lugar']);
-                $("#facilitador" + i).append("<br>Facilitador(a):</br> "+response[i]['Nombre']);
-                $("#contactof" + i).append("<br>Contacto:</br> "+response[i]['Contacto']);
-                $("#areadisponible" + i).append("<br>Área de Disponibilidad:</br> "+response[i]['Lugar de residencia-trabajo']);
+                $("#facilitador" + i).append("<br>Facilitador(a): "+response[i]['Nombre']);
+                $("#contactof" + i).append("<br>Contacto: "+response[i]['Contacto']);
+                $("#areadisponible" + i).append("<br>Área de Disponibilidad: "+response[i]['Lugar de residencia-trabajo']);
             }
         },
         error: function(request, error) {
