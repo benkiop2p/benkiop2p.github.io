@@ -19,6 +19,10 @@ p {
   color: black;
 }
 
+q {
+  font-style: italic;
+}
+
 .button-collapse {
   color: #26a69a;
 }
