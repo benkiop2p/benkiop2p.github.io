@@ -63,3 +63,7 @@ q {
 footer.page-footer {
   margin: 0;
 }
+
+ul{
+  list-style-type:none;
+}
