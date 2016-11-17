@@ -13,7 +13,7 @@ function llenarTabla() {
 
             for (var i = 0; i < response.length; i++) {
                 var card = $('<div>', {
-                        'class': 'col s6'
+                        'class': 'col s4'
                     }).append(
                         $('<div>', {
                             'id': 'card' + i,
