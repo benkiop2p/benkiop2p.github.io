@@ -1,80 +1,52 @@
-/* Custom Stylesheet */
-
-
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
-
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+.larger:before {
+    font-size: 2em;
 }
-
-
-
-nav ul a, nav .brand-logo {
-    color: #444;
-}
-
 p {
-    line-height: 150%;
-    font-family: "Roboto";
-    font-style: normal;
-    font-size: 20px;
-    color: black;
+  font-size:12px;
+  line-height: 1.5em;
+}
+span{
+
+    line-height: 1em;
 }
 
-q {
-    font-style: italic;
+.iframee {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.iframed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
-.button-collapse {
-    color: #26a69a;
+.modal {
+   max-height: 80%;
 }
 
-.parallax-container {
-    min-height: 380px;
-    line-height: 0;
-    height: auto;
-    color: rgba(255, 255, 255, .9);
-}
 
-.parallax-container .section {
-    width: 100%;
-}
 
-@media only screen and (max-width: 992px) {
-    .parallax-container .section {
-        position: absolute;
-        top: 40%;
-    }
-    #index-banner .section {
-        top: 10%;
-    }
-}
+#tableFilter {margin: 12px 0px; border: none; border-bottom: 1px solid #333; background-color: transparent; padding: 0px; color: #fff; font-size: 13px; height: 22px;}
+.noMatches {margin-left: 20px; font-size: 11px; font-style: italic; visibility: hidden;}
+#map {height: 400px; max-width: 800px; background: #DADADA;}
+#holder {height: 400px; max-width: 600px; background: #FFE4E4;}
+#bar2 {height: 320px; max-width: 600px; background: #F8CDCD;}
 
-@media only screen and (max-width: 600px) {
-    #index-banner .section {
-        top: 0;
-    }
-}
+/*bar charts*/
+.labels text {text-align: right;}
+.bar .labels text {fill: #333;}
+.bar rect {fill: #e6e6e6;}
+.axis {shape-rendering: crispEdges;}
+.x.axis line {stroke: #FFE4E4; /*stroke-opacity: .2;*/ fill: none;}
+.x.axis path {fill: none;}
+.x.axis text {fill: #333;}
+.xLabel {font-family: sans-serif; font-size: 9px;}
+/*mapa*/
+.leaflet-popup-content {font-family: Merriweather;}
+.leaflet-popup-content h2 {margin-bottom: 4px;}
 
-.icon-block {
-    padding: 0 15px;
-}
-
-.icon-block .material-icons {
-    font-size: inherit;
-}
-
-footer.page-footer {
-    margin: 0;
-}
-
-ul {
-    list-style-type: none;
-}
+img.petThumbs {height: 80px; width: 80px; border-radius: 1000px;}
