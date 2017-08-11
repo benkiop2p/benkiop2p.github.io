@@ -28,7 +28,10 @@ span{
    max-height: 80%;
 }
 
-
+.tableoverflow {
+  overflow-x: visible;
+    overflow-y: hidden;
+}
 
 #tableFilter {margin: 12px 0px; border: none; border-bottom: 1px solid #333; background-color: transparent; padding: 0px; color: #fff; font-size: 13px; height: 22px;}
 .noMatches {margin-left: 20px; font-size: 11px; font-style: italic; visibility: hidden;}
