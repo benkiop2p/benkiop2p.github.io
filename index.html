@@ -1,543 +1,1015 @@
-<!doctype html>
-<html manifest="manifest.json">
+<!DOCTYPE html>
+<html class="md device-pixel-ratio-1 device-desktop support-position-sticky">
 
 <head>
-<title>Benkio</title>
-<meta name="viewport" content="width=device-width">
-<meta name="mobile-web-app-capable" content="yes">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" href="css/addtohomescreen.css">
-<script src="js/addtohomescreen.js"></script>
-<script>
-  addToHomescreen();
-</script>
-<link rel="icon" sizes="192x192" href="img/v5-1.png">
-<link rel="stylesheet" href="css/ionicons.min.css">
-<link rel="stylesheet" href="css/materialize.css" media="screen" title="no title" charset="utf-8">
-
-<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-<link href='css/mapbox.css' rel='stylesheet' />
-<link rel="stylesheet" href="css/MarkerCluster.css" />
-<link rel="stylesheet" href="css/MarkerCluster.Default.css" />
-<script src="js/vendor/jquery.js"></script>
-<script src="js/vendor/vue.min.js"></script>
-<script src="js/vendor/materialize.js"></script>
-<script src="js/googleform.js" charset="utf-8"></script>
-<script src="js/animatedModal.min.js" charset="utf-8"></script>
-<script src="js/init.js"></script>
-  <!--
-  <link href='https://api.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
-  <link media="screen" rel="stylesheet" type="text/css" href="css/site.css">
-    <script src='https://api.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.js'></script>
-  <script src="js/app.js"></script>
-  <script src="js/llenarTabla.js"></script>
--->
-
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2196f3">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Benkio</title>
+  <link rel="icon" sizes="192x192" href="css/images/logo.png">
+  <link rel="stylesheet" href="css/leaflet.css">
+  <link rel="stylesheet" href="css/framework7.css">
+  <!--<link rel="stylesheet" href="css/ionicons.min.css">-->
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/leaflet-sidebar.css">
+  <style media="screen">
+    .gradiente {
+      /*background: linear-gradient(to right, #4776e6, #8e54e9);*/
+      /*background: linear-gradient(to right, #1a2980, #26d0ce);*/
+      background: linear-gradient(to right, #4750ff, #1fa2ff);
+    }
+  </style>
 </head>
 
 <body>
-  <header>
-    <nav class="top-nav blue darken-3">
-      <a href="#" class="brand-logo white-text center">Benkio</a>
-      <a href="index.html" class="brand-logo left"></a>
-
-    </nav>
-    <div class="blue darken-3">
-      <br>
-    </div>
-    <div class="nav-content">
-      <ul class="tabs tabs-transparent tabs-fixed-width">
-        <li class="tab blue darken-3"><a href="#usuarios"><i class="icon ion-ios-people larger center"></i></a></li>
-        <li class="tab blue darken-3"><a class="active" href="#intercambios"><i class="icon ion-loop larger center"></i></a></li>
-        <li class="tab blue darken-3"><a href="#herramientas"><i class="icon ion-wrench larger center"></i></a></li>
-        <li class="tab blue darken-3"><a href="#espacios"><i class="icon ion-location larger center"></i></a></li>
-        <li class="tab blue darken-3"><a href="#faq"><i class="icon ion-information-circled larger center"></i></a></li>
-      </ul>
-      <div id="usuarios" class="col s12">
-        <div class='container'>
-          <h2 class="center">Redes y Usuarios</h2>
-          <p class="center larger text-flow">
-            Lista de usuarios registrados.
-          </p>
-          <div>
-            <ul>
-              <li id="usrs">
-                <script id="user" type="text/x-handlebars-template">
-                  <div class="container">
-                    <div class="col s12 center">
-                      <div class="card lime">
-                        <div class="card-content black-text">
-                          <span class="card-title">{{ cells.Nombre}}</span>
-                          <p><b>Contacto: </b> {{ cells.Contacto}}</p>
-                        </div>
-                        <div class="card-action">
-                          <p class="asmall"><b>Tipo Usuario: </b> {{ cells.Tipo_Usuario }}</p>
-                          <p class="asmall"><b>Área de Encuentro:</b> {{ cells.Lugar_Residencia-Trabajo }}</p>
-                          <p class="asmall"><b>Intereses:</b> {{ cells.Intereses }}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </script>
-              </li>
-            </ul>
-          </div>
-
-
-        </div>
-            <!--<a id="demo01" href="#animatedModal ">DEMO01</a>
-
-
-            <div id="animatedModal" class="animated modal-02-off bounceOutDown" style="position: fixed; width: 100%; height: 100%; top: 0px; left: 0px; background-color: rgb(52, 152, 219); overflow-y: auto; z-index: -9999; opacity: 1; animation-duration: 0.6s;">
-
-                <div class="close-animatedModal">
-                    CLOSE MODAL
-                </div>
-
-                <div class="modal-content">
-                        asas  Your modal content goes here
-                </div>
-        </div>
-        <script>
-  $("#demo01").animatedModal({
-    modalTarget:'animatedModal',
-    animatedIn:'lightSpeedIn',
-    animatedOut:'bounceOutDown',
-    color:'#3498db'
-  });
-</script>-->
-<div id="modal1" class="modal">
-          <div class="modal-content">
-            <h3 class="center">Registro de Usuarios</h3>
-            <div class="row iframee">
-              <iframe class="iframed" src="https://docs.google.com/forms/d/e/1FAIpQLSeIy5RIj-52IpBm2Si9Wsc5nTqMxq3MzWhZpqd3tFOP7NPbkg/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class="modal-action modal-close btn-flat">Cancelar</a>
-
+  <!--<div id="loader"></div>-->
+  <div id="app" class="framework7-root">
+    <div id="loader-wrapper">
+    <div id="loader"></div>
+     <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+     </div>
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar"></div>
+    <!-- Left panel with cover effect-->
+    <div class="panel-backdrop" style=""></div>
+    <div class="panel panel-left panel-cover theme-dark">
+      <div class="view">
+        <div class="page">
+          <div class="navbar gradiente">
+            <div class="navbar-inner">
+              <div class="title">Usuario</div>
             </div>
           </div>
-        </div>-->
-        <div class="fixed-action-btn">
-          <a class="btn-floating btn-large red" href="#modal1">+
-    </a>
-        </div>
-
-      </div>
-      <div id="intercambios" class="col s12">
-        <div class="container">
-          <h2 class="center">Pizarra de Intercambios</h2>
-          <div>
-            <p class="center larger text-flow">
-              Acá podes encontrar ofertas y solicitudes de intercambios de conocimiento. Solo queda contactar a la persona o grupo que te interesa y agendar una fecha para el encuentro, que puede ser físico o virtual.
-            </p>
-          </div>
-          <div id="pizarra">
-            <ul class="container">
-              <li id="exchngs">
-                <script id="exch" type="text/x-handlebars-template">
-
-                  <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-
-                    </div>
-                    <div class="card-content">
-                      <span class="card-title activator grey-text text-darken-4">{{ cells.Nombre_Actividad}}<i class="icon ion-more right"></i></span>
-                      <br>
-                      <br>
-                      <div class="card-action">
-                        <p>{{cells.Categoría}}</p>
-                        <br>
-                      </div>
-
-                    </div>
-                    <div class="card-reveal">
-                      <i class="icon ion-close-round right"></i>
-                      <span class="card-title grey-text text-darken-4"><b>{{ cells.Nombre_Actividad}}</b></span>
-                      <p><b>Descripción: </b>{{cells.Descripción}}</p><br>
-                      <p><b>Requerimientos:</b> {{cells.Requerimientos}}</p><br>
-                      <p><b>Tiempo Aproximado: </b>{{cells.Tiempo}}</p><br>
-                      <p><b>Fecha: </b>{{cells.Fecha}}</p><br>
-                      <p><b>Lugar: </b>{{cells.Lugar}}</p><br>
-                      <div class="card-action">
-                        <p><b>Facilita: </b>{{cells.Nombre}}</p><br>
-                        <p><b>Contacto: </b>{{cells.Contacto}}</p><br>
-                        <p><b>Área de Encuentro: </b>{{cells.AreadeEncuentro}}</p><br>
-                      </div>
-                    </div>
-                  </div>
-
-                </script>
-              </li>
-            </ul>
+          <div class="page-content">
+            <div class="block">Preferencias</div>
+            <div class="block"></div>
           </div>
         </div>
-        <div id="modal2" class="modal">
-          <div class="modal-content">
-            <h3 class="center">Agregar Nuevo Intercambio</h3>
-            <div class="row iframee">
-<iframe class="iframed" src="https://docs.google.com/forms/d/e/1FAIpQLScrRsBEZbcPJXKjMBVuah-LuPNkBwzTEJ-CYxKHtpTkwte49A/viewform?embedded=true" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close btn-flat">Cancelar</a>
-          </div>
-        </div>
-
-        <div class="fixed-action-btn">
-          <a class="btn-floating btn-large red" href="#modal2">+
-    </a>
-        </div>
-
-
-      </div>
-      <div id="herramientas" class="col s12">
-        <div>
-          <h2 class="center">Recursos y Herramientas</h2>
-
-          <div>
-            <p class="center larger">
-              Para facilitar compartir-alquilar herramientas directamente para trabajo (serrucho, videobeam, micrófono, ...) a partir de geolocalización sugerimos usar <a href="https://www.peerby.com/">Peerby</a>.
-            </p>
-          </div>
-          <ul class="collapsible" data-collapsible="accordion">
-            <li>
-              <div class="collapsible-header ">
-                <h4>Bibliotecas Abiertas</h4></div>
-              <div class="collapsible-body">
-                <div>
-                  <table id="biblio" class="stripped"></table>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="collapsible-header ">
-                <h4>Iniciativas Relacionadas</h4></div>
-              <div class="collapsible-body">
-                <div class="center">
-<table id="initGlobal" class="striped"></table>
-
-
-
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="collapsible-header ">
-                <h4>Sitios Educativos En Línea - DIY</h4></div>
-              <div class="collapsible-body">
-                <div class="center">
-                  <table id="onlineEd" class="striped tableoverflow">
-                  </table>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="collapsible-header ">
-                <h4>Herramientas Digitales Opensource-P2P</h4></div>
-              <div class="collapsible-body">
-                <div class="center">
-                  <table id="infraReds" class="striped tableoverflow">
-                  </table>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div id="modal3" class="modal">
-          <div class="modal-content">
-            <h3 class="center">Agregar Recursos o Herramientas</h3>
-
-            <div class="row iframee">
-              <iframe class="iframed" src="https://docs.google.com/forms/d/e/1FAIpQLSdh8zO7u7HpBdv-qyFH0jClWs9UaYxkIAw7oA8oD_VcO7GT6w/viewform?embedded=true#responses" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class="modal-action modal-close btn-flat">Cancelar</a>
-            </div>
-          </div>
-        </div>
-        <div class="fixed-action-btn">
-          <a class="btn-floating btn-large red" href="#modal3">+
-    </a>
-        </div>
-
-      </div>
-      <div id="espacios" class="col s12">
-        <div class="container">
-          <h2 class="center">Puntos de Encuentro</h2>
-          <div class="">
-            <p class="center larger text-flow">
-              Mapeo de espacios públicos/privados en CR para la activación, creación, el intercambio de conocimiento y aprendizaje común. [Información de cada espacio por completar].<br>
-              <b>Selecciona un punto en el mapa o un espacio en la lista para desplegar la información</b>
-            </p>
-
-          </div>
-          <br>
-          <div id="wrapper">
-            <div class="container">
-              <br>
-
-              <div id="map"></div>
-              <br>
-              <div id="right">
-                <div id="selectedSpot"></div>
-
-              </div>
-            </div>
-            <div class="container">
-              <input id="tableFilter" class="col s12 m6" type="text" placeholder="Filtrar por"></input>
-              <button type="button" class="clear" name="button">Limpiar</button>
-              <!--<span class="clear button">Limpiar</span>-->
-              <span class="noMatches">No Hay Resultados</span>
-              <br>
-              <div id="puntosEncuentro" class="tableoverflow"></div>
-            </div>
-            <br>
-            <br>
-          </div>
-
-        </div>
-
-        <div id="modal4" class="modal">
-          <div class="modal-content">
-            <h5 class="center">Registro de Punto de Encuentro</h5>
-            <div class="row iframee">
-              <iframe class="iframed" src="https://docs.google.com/forms/d/e/1FAIpQLSdYpO5rK64BSb7LkEWs7npox8KqXV9IrlUecyokBfB9to0Gjw/viewform?embedded=true#responses" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
-
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class="modal-action modal-close btn-flat">Cancelar</a>
-            </div>
-          </div>
-        </div>
-        <div class="fixed-action-btn">
-          <a class="btn-floating btn-large red" href="#modal4">+
-    </a>
-        </div>
-
-      </div>
-      <div id="faq" class="col s12">
-        <h2 class="center">FAQ<h2>
-      <ul class="collapsible" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header"><h4>¿Qué es Benkio?</h4></div>
-      <div class="collapsible-body"><p class="flow-text">
-        Benkio es una cooperativa de plataforma que facilita procesos y herramientas para el fortalecimiento de comunidades de aprendizaje y producción común/colaborativa. La plataforma digital permite gestionar intercambios cara a cara de conocimiento práctico (resolución de problemas cotidianos a partir de conocimiento científico aplicado y popular) o hands-on skill sharing entre pares, conectando, de manera distribuida, a agentes (grupos independentes y personas interesadas), espacios (comercios locales, espacios públicos subutilizados y de otra índole) y recursos o herramientas (cosas tan simples como una mesa, una silla, y una conexión a internet, hasta el acceso a un cautín, documentos técnicos, un serrucho o una impresora 3d).  <br><br>
-Pasando también por propiciar otras formas colaborativas-no centralizadas, abiertas, y principalmente creativas, de gestionar espacios, conocimientos y recursos desde varios ámbitos: <b>Soberanía alimentaria y de la salud</b>(huertos urbanos, usos medicinales de plantas, ..), <b>Tecnología abierta- estrategias contra la obsolescencia programada</b> (nuevos uso a aparatos que se consideran obsoletos, tecnología p2p y opensource), <b>Autosuficiencia energética </b>(biodigestores, bicimáquinas, transporte, energía solar, eólica, ..), <b>producción local entre pares</b>  (diseño global manufactura local, permacultura, producción cooperativa, experimentación creativa, gestión de proyectos autogestionados, ... ).
-<br>
-
-      </p></div></li>
-    <li>
-      <div class="collapsible-header"><h4>¿Cómo Funciona?</h4></div>
-      <div class="collapsible-body"><p class="flow-text">
-        <b>SOBRE LOS ENCUENTROS</b><br>
-La plataforma digital es solo para lograr concretar el encuentro físico y gestionar la información que sale de los encuentros para un posterior uso y replicación.<br> <br>
-
-La sesiones de intercambio son de 45 min-1h máx. <a href="https://drive.google.com/drive/u/0/folders/0B3oD9vZHRDUmVmdWUm5pX0dCcEk">Acá- Material para facilitadores</a> <br> <br>
-
-Desde cómo cambiar la resistencia de su cafetera hasta cómo arreglar la lavadora de la casa, pasando por cómo tejer a cuál sería el mejor compostaje. <br> <br>
-
-Ponemos a disposición de la comunidad los medios necesarios para resolver algunos de sus problemas cotidianos.<br> <br>
-
-El objetivo es visibilizar que muchos conocimientos están muy cerca en la gente que conocemos y que aprender estas destrezas abren nuestros campos de acción.<br> <br>
-      </p></div></li>
-
-
-    <li>
-      <div class="collapsible-header"><h4>¿Dónde puedo conseguir más Información?</h4></div>
-      <div class="collapsible-body">
-      <p class="flow-text">
-        Puede visitar nuestro
-        <b>Facebook: </b><a href="https://www.facebook.com/pg/benkiop2p">Benkio</a>
-        o enviarnos un correo a:  benkiop2p@gmail.com o visitar nuestros canales y grupo en Telegram. <br>
-        <b>Canales:</b> <br>
-        <a href="https://t.me/benkiokm">@benkiokm</a> Canal de Recursos Educativos Abiertos en torno a conocimiento práctico y resolución de problemas cotidianos  <br>
-        <a href="https://t.me/bnkmap">@bbnkmap</a> Mapeo de espacios públicos/privados en CR para la activación, creación, el intercambio de conocimiento y aprendizaje común.
-        <a href="https://t.me/benkioeb">@benkioeb</a> Pizarra de intercambios
-        <b>Grupo: </b> <a href="https://t.me/benkioim">@benkioim</a><br>
-        Próximamente estaremos migrando el sistema a <a href="https://zeronet.io">Zeronet</a>, una red p2p para el hosting de sitios web.<br>
-        Envíenos un correo para estar al tanto de las actividades que estaremos realizando.
-      </p></div>
-
-    </li>
-  </ul>
       </div>
     </div>
-  </nav>
-     </header>
+    <!-- Views/Tabs container -->
+    <div class="views tabs gradiente">
+      <!-- Tabbar for switching views-tabs -->
+      <div class="toolbar tabbar-labels toolbar-bottom-md gradiente">
+        <div class="toolbar-inner">
 
-
-      </body>
-   <footer>
-     <script type="text/javascript" src='js/tabletop1.3.4.js'></script>
-     <script type="text/javascript" src='js/sheetsee.js'></script>
-     <script type="text/javascript" src='js/leaflet.markercluster.js'></script>
-      <script src="js//sheetrock.min.js" charset="utf-8"></script>
-      <script src="js/handlebars.min.js" charset="utf-8"></script>
-      <script id="puntosEncuentro" type="text/html">
-          <table class="striped">
-              <tr><th class="tHeader">Nombre</th><th class="tHeader">Dirección</th><th class="tHeader">Ciudad</th><th class="tHeader">Tipo</th></tr>
-              {{#rows}}
-                  <tr id="{{rowNumber}}" class="spotRow"><td>{{name}}</td><td>{{address}}</td><td>{{city}}</td><td>{{tipo}}</td></tr>
-              {{/rows}}
-          </table>
-      </script>
-      <script id="selectedSpot" type="text/html">
-          {{#rows}}
-          <h4 class="fauxButton">Información Punto de Encuentro</h4>
-          <h5>{{name}}</h5>
-          <p class=""><b>Dirección: </b>{{address}}<p>
-          <p class=""><b>Ciudad: </b>{{city}}</p>
-          <p class=""><b>Descripción: </b>{{description}}</p>
-          <p class=""><b>Horario: </b>{{horario}}</p>
-          <p class=""><b>Email: </b>{{email}}</p>
-          <p class=""><b>Website: </b>{{website}}</p>
-          <p class=""><b>Telefono: </b>{{phone}}</p>
-          <p class=""><b>Mesas Disponible: </b>{{mesasdisponibles}}</p>
-          <p class=""><b>Wifi Disponible: </b>{{wifi}}</p>
-          <p class=""><b>Tamaño Aproximado: </b>{{tamanoaprox}}</p>
-          <p class=""><b>Estado (Desuso, Subutilizado, Abierto al Publico): </b>{{desuso}}</p>
-
-          <!--<ul>
-              <li><span class="category">Descripción:</span> <p>{{description}}</p></li>
-              <li><span class="category">Horario:</span> <p>{{horario}}</p></li>
-              <li><span class="category">Email:</span> <p>{{email}}</p></li>
-              <li><span class="category">Website:</span> <p>{{website}}</p></li>
-              <li><span class="category">Telefono:</span> <p>{{phone}}</p></li>
-              <li><span class="category">Mesas Disponible:</span> <p>{{mesasdisponibles}}</p></li>
-              <li><span class="category">Wifi Disponible:</span> <p>{{wifi}}</p></li>
-              <li><span class="category">Tamaño Aproximado:</span> <p>{{tamanoaprox}}</p></li>
-              <li><span class="category">Desuso:</span> <p>{{desuso}}</p></li>
-          </ul>-->
-          {{/rows}}
-      </script>
-
-      <script type="text/javascript">
-          document.addEventListener('DOMContentLoaded', function() {
-              var gData
-              var URL = "1Lyq67VFuNoKhNAQzhjqpbFubGXxTeM14zEd_1-MUivQ"
-                  Tabletop.init({ key: URL, callback: showInfo, simpleSheet: true })
-          })
-          function showInfo(gData) {
-              tableOptions = {
-                  "data": gData,
-                  "tableDiv": "#puntosEncuentro",
-                  "filterDiv": "#tableFilter"
-              }
-              Sheetsee.makeTable(tableOptions)
-              Sheetsee.initiateTableFilter(tableOptions)
-
-              // create geoJSON with coordinates and other
-              // useful bits from the original data
-              var optionsJSON = ["name", "city", "rowNumber"]
-              var geoJSON = Sheetsee.createGeoJSON(gData, optionsJSON)
-
-              // create map, tilelayer (map background), markers and popups
-              var map = Sheetsee.loadMap("map")
-              Sheetsee.addTileLayer(map, 'jllord.n7aml2bc')
-              var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, "<h2>{{ name }}</h2>", true)
-
-              $('.spotRow').live("click", function(event) {
-                  $('.spotRow').removeClass("selectedRow")
-                  var rowNumber = $(this).closest("tr").attr("id")
-                  $('#' + rowNumber).addClass("selectedRow")
-                  var dataElement = Sheetsee.getMatches(gData, rowNumber, "rowNumber")
-                  var selectedSpot = Sheetsee.ich.selectedSpot({
-                      rows: dataElement
-                  })
-                  $('#selectedSpot').html(selectedSpot).css("display", "inline")
-                  var selectedCoords = [dataElement[0].lat, dataElement[0].long]
-                  map.setView(selectedCoords, 14)
-              })
-
-            // Add click listener to the markerLayer
-              markerLayer.on('click', function(e) {
-                  // clear any selected rows
-                  $('.spotRow').removeClass("selectedRow")
-                  // get row number of selected marker
-                  var rowNumber = e.layer.feature.opts.rowNumber
-                  // find that row in the table and make consider it selected
-                  $('#' + rowNumber).addClass("selectedRow")
-                  // using row number, get the data for the selected spot
-                  var dataElement = Sheetsee.getMatches(gData, rowNumber.toString(), "rowNumber")
-                  // take those details and re-write the selected spot section
-                  var selectedSpot = Sheetsee.ich.selectedSpot({
-                      rows: dataElement
-                  })
-                  // center the map on the selected element
-                  map.panTo([dataElement[0].lat, dataElement[0].long])
-                  // update the spot listing
-                  $('#selectedSpot').html(selectedSpot).css("display", "inline")
-              })
-
-              if(window.location.hash) {
-                  $('#tableFilter').val(window.location.hash.substring(1)).keyup()
-                  $('.spotRow').first().click()
-              }
-          }
-
-          $(document).on('keyup', '#tableFilter', function() {
-              window.location.hash = $(this).val()
-              $('.spotRow').first().click()
-          })
-      </script>
-     <script>
-
-     $(document).ready(function () {
-       var exchRegistrados = 'https://docs.google.com/spreadsheets/d/1Wiqvmn1wVnrGkX-cbF6nEq0x0Q-EcKgrH733L4wszKk/edit#gid=1508873198';
-       var iniciativas = 'https://docs.google.com/spreadsheets/d/1gWxJ720bJNGzMA9OEJTK6xa44JEyfl5s1JeA95mF_jE/edit#gid=1841199247';
-       var agentes = 'https://docs.google.com/spreadsheets/d/1IsMJ8gwbdXT7nUbtDJ-bUWWaO3mw05hJ0Ecu_Tm0xoM/edit#gid=488996932';
-       var iniciativasGlobal = 'https://docs.google.com/spreadsheets/d/1gWxJ720bJNGzMA9OEJTK6xa44JEyfl5s1JeA95mF_jE/edit#gid=1841199247';
-       var infraRed = 'https://docs.google.com/spreadsheets/d/1gWxJ720bJNGzMA9OEJTK6xa44JEyfl5s1JeA95mF_jE/edit#gid=64351420';
-       var onlineED = 'https://docs.google.com/spreadsheets/d/1gWxJ720bJNGzMA9OEJTK6xa44JEyfl5s1JeA95mF_jE/edit#gid=1369604528';
-       var biblios = 'https://docs.google.com/spreadsheets/d/1gWxJ720bJNGzMA9OEJTK6xa44JEyfl5s1JeA95mF_jE/edit#gid=797437749';
-
-
-     var userTemp = Handlebars.compile($('#user').html());
-     var exchTemp = Handlebars.compile($('#exch').html());
+          <a href="#view-pe" class="tab-link tab-link-active">
+            <span class="tabbar-label"><i class="icon icon1 ion-location"></i></span>
+          </a>
+          <a href="#view-ic" class="tab-link ">
+            <span class="tabbar-label"><i class="icon icon1 ion-loop"></i></span>
+          </a>
+          <a href="#view-hr" class="tab-link">
+            <span class="tabbar-label"><i class="icon icon1 ion-wrench"></i></span>
+          </a>
+          <a href="#view-users" class="tab-link">
+            <span class="tabbar-label"><i class="icon icon1 ion-person-stalker"></i></span>
+          </a>
+          <a href="#view-info" class="tab-link">
+            <span class="tabbar-label"><i class="icon icon1 ion-information-circled"></i></span>
+          </a>
+          <!--<span class="tab-link-highlight" style="width: 33.3333%; transform: translate3d(0%, 0px, 0px);"></span>-->
+        </div>
+      </div>
+      <!--Puntos de Encuentro-->
+      <div id="view-pe" class="view view-main tab tab-active">
+        <div class="page page-current" data-name="pe">
+          <!-- Top Navbar -->
+          <div class="navbar gradiente">
+            <div class="navbar-inner">
+              <!--<a href="#" class="panel-open" data-panel="left">Filtrar Mapa</a>-->
+              <a href="#" class="button popup-open" data-popup="#mapFilterPU">Filtrar</a>
+              <div class="title sliding">Puntos de Encuentro</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="fab fab-right-top color-orange">
+              <a href="#" class="popup-open" data-popup="#espFormPU">+</a>
+                </div>
+                <div class="block">
+                  <div class="accordion-list">
+                    <div class="accordion-item">
+                      <div class="accordion-item-toggle">¿Qué Encuentro Aquí?</div>
+                      <div class="accordion-item-content"><p>Mapeo de espacios públicos/privados en CR para la activación, creación y aprendizaje colaborativo.<br>
+                      <b>Selecciona un punto en el mapa para desplegar la información </b></p></div>
+                    </div>
+                  </div>
+                </div>
+            <div class="block block-strong">
+              <div id="sidebar">
+                <h1 id="title"></h1><a class="close" onclick="sidebar.hide()">&times;</a>
+                <div class="chip color-red">
+                  <div id="tag" class="chip-label text-align-right"></div>
+                </div>
+                <div class="block">
+                  <div class="accordion-list">
+                    <div class="accordion-item">
+                      <div class="accordion-item-toggle"><b class="p1"> Desplegar Información+</b></div>
+                      <div class="accordion-item-content">
+                        <b>Descripción: </b><p id="description"></p><br>
+                        <b>Horario: </b><p id="horario"></p><br>
+                        <b>Teléfono: </b><p id="phone"></p>
+                        <b> Email: </b><p id="email"></p><br>
+                        <b> Contraseña Wifi: </b><p id="wifi"></p><br>
+                        <b>Mesas Disponibles: </b><p id="mesas"></p><br>
+                        <b>Tamaño Aproximado: </b><p id="tamaño"></p><br>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <p><a class="link external" id="coordenadas" href="#"></a></p>
+              </div>
+              <div id="map" style="height: 600px;width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Herramientas-->
+      <div id="view-hr" class="view tab">
+        <div class="page page-current" data-name="hr">
+          <div class="navbar gradiente">
+            <div class="navbar-inner sliding">
+              <div class="title">Herramientas y Recursos</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">
+              <div class="accordion-list">
+                <div class="accordion-item">
+                  <div class="accordion-item-toggle">¿Qué Encuentro Aquí?</div>
+                  <div class="accordion-item-content"><p> Mapeo de Iniciativas, Herramientas, Recursos, Apps, Websites para facilitar procesos creativos colaborativos y autogestivos.<br>
+                  <b>Selecciona un item que te interese para desplegar la información </b></p></div>
+                </div>
+              </div>
+            </div>
+            <div class="list links-list">
+              <ul class="justify-content-center">
+                <li><a href="#" class="popup-open" data-popup="#baPU">Bibliotecas y Recursos Abiertos</a></li>
+                <li><a href="#" class="popup-open" data-popup="#irPU">Iniciativas Relacionadas</a></li>
+                <li><a href="#" class="popup-open" data-popup="#sePU">Sitios Educativos En Línea-DIY</a></li>
+                <li><a href="#" class="popup-open" data-popup="#hdPU">Herramientas Digitales Opensource-P2P</a></li>
+                <li><a href="#" class="popup-open" data-popup="#appPU">Apps y Servicios</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
 
-    $('#usrs').sheetrock({
-     url: agentes,
-     query: "select B,C,D,G",
-     rowTemplate: userTemp
-   });
+      <!-- Intercambios -->
+      <div id="view-ic" class="view tab">
+        <div class="page page-current" data-name="ic">
+          <div class="navbar gradiente">
+            <div class="navbar-inner sliding">
+              <a href="#" class="button popup-open" data-popup="#icFilterPU">Filtrar </a>
+              <div class="title">Ofertas de Intercambio</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="fab fab-right-top color-orange">
+              <a href="#" class="popup-open" data-popup="#icFormPU">+</a>
+                </div>
+                <div class="block">
+                  <div class="accordion-list">
+                    <div class="accordion-item">
+                      <div class="accordion-item-toggle">¿Qué Encuentro Aquí?</div>
+                      <div class="accordion-item-content"><p> Acá podes encontrar ofertas y solicitudes de intercambios de conocimiento. Solo queda contactar a la persona o grupo que te interesa y agendar una fecha para el encuentro, que puede ser físico o virtual.<br>
+                      <b>Para desplegar los intercambios de su interés seleccione las categorías correspondientes </b></p></div>
 
-     $('#exchngs').sheetrock({
-     url: exchRegistrados,
-     query: "select * order by I asc",
-     rowTemplate: exchTemp
-     });
+                    </div>
+                  </div>
+                </div>
+            <div class="block">
 
-     $('#initGlobal').sheetrock({
-  url: iniciativasGlobal,
-  query: "select B,C,D",
+              <div class="block">
 
-});
+                <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="15" class="swiper-container swiper-init demo-swiper">
+                  <div class="swiper-pagination"></div>
 
-$('#biblio').sheetrock({
-url: biblios,
-query: "select A,B",
-});
+                  <div id="exchContainer" class="swiper-wrapper">
+                    <script id="exchSW" type="text/x-handlebars-template">
+                      <div class="swiper-slide">
+                        <div class="card cardo">
+                          <div class="card-header">{{cells.Nombre_Actividad}}</div>
+                          <div class="card-content card-content-padding">
+                            <div class="chip color-red">
+                              <div class="chip-label text-align-right">{{cells.Categoría}}</div>
+                            </div>
+                            <p class="date"><b>Facilita: </b>{{cells.Nombre}}</p>
+                            <p><b>Descripción: </b>{{cells.Descripción}}</p><br>
+                            <p><b>Requerimientos:</b> {{cells.Requerimientos}}</p><br>
+                            <p><b>Tiempo Aproximado: </b>{{cells.Tiempo}}</p><br>
+                            <p><b>Fecha: </b>{{cells.Fecha}}</p><br>
+                            <p><b>Lugar: </b>{{cells.Lugar}}</p><br>
+                          </div>
+                          <div class="card-footer">
+                            <div class="row">
+                              <div class="">
+                                <p><b>Contacto: </b>{{cells.Contacto}}</p><br>
+                                <p><b>Área de Encuentro: </b>{{cells.AreadeEncuentro}}</p><br>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </script>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-$('#onlineEd').sheetrock({
-url: onlineED,
-query: "select B,C,A",
-});
+      <!-- Users -->
+      <div id="view-users" class="view tab">
+        <div class="page page-current" data-name="usr">
+          <div class="navbar gradiente">
+            <div class="navbar-inner sliding">
+              <div class="title">Usuarios Registrados</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">
+              <div class="accordion-list">
+                <div class="accordion-item">
+                  <div class="accordion-item-toggle">¿Qué Encuentro Aquí?</div>
+                  <div class="accordion-item-content"><p>Una Pizarra de Personas y Colectivas Interesadas en el Intercambio de Saberes <br>
+                  </p></div>
+                </div>
+              </div>
+            </div>
+            <div class="fab fab-right-top color-orange">
+              <a href="#" class="popup-open" data-popup="#usrFormPU">+</a>
+                </div>
+            <div class="block">
+              <div data-space-between="10" data-direction="vertical" class="swiper-container swiper-init demo-swiper spUC">
+                <div id="usrContainer">
+                  <script id="usrSW" type="text/x-handlebars-template">
+                    <div class="card cardo">
+                      <div class="card-header">{{ cells.Nombre}}</div>
+                      <div class="card-content card-content-padding">
+                        <div class="chip color-red">
+                          <div class="chip-label text-align-right">{{ cells.Tipo }}</div>
+                        </div>
+                        <p><b>Intereses: </b> {{ cells.Intereses }}</p>
+                        <p><b>Ejes de Interés: </b> {{ cells.Ejes }}</p>
+                        <p><b>Conocimientos: </b> {{ cells.Conocimientos }}</p>
+                      </div>
+                      <div class="card-footer">
+                        <div class="row">
+                          <div class="">
+                            <p><b>Contacto: </b> {{ cells.Contacto}}</p>
+                            <p><b>Área de Encuentro: </b> {{ cells.Lugar }}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Info-->
+      <div id="view-info" class="view tab">
+        <div class="page page-current" data-name="hr">
+          <div class="navbar gradiente">
+            <div class="navbar-inner sliding">
+              <div class="title">FAQ</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">
+              <div class="accordion-list">
+                <div class="accordion-item">
+                  <div class="accordion-item-toggle">¿Qué Encuentro Aquí?</div>
+                  <div class="accordion-item-content"><p>Información Detallada sobre el Proyecto
+                  <b>Selecciona un item que te interese para desplegar la información </b></p></div>
+                </div>
+              </div>
+            </div>
+            <div class="block block-strong">
+              <div class="list links-list">
 
-$('#infraReds').sheetrock({
-url: infraRed,
-query: "select A,B,C",
-});
+                    <div class="accordion-list">
+                      <div class="accordion-item">
+                        <div class="accordion-item-toggle"><h3>¿Qué es Benkio</h3></div>
+                        <div class="accordion-item-content">
+                          <div class="block">
+                            <p class="p1">En pocas palabras: una plataforma para la autogestión. Benkio es una plataforma cooperativa que facilita herramientas para el fortalecimiento de comunidades creativas interesadas en el aprendizaje y producción común/colaborativa. Su meta es facilitar la gestión de encuentros de conocimiento (conocimiento científico aplicado y saber popular) o hands-on skill sharing, conectando, de manera distribuida, a agentes (grupos independentes y personas interesadas), espacios (comercios locales, espacios públicos subutilizados y de otra índole) y herramientas (cosas tan simples como una mesa, una silla, y una conexión a internet, hasta el acceso a un cautín, documentos técnicos, un serrucho o una impresora 3d).</p>
+                            <br>
+                            <p class="p1">Nos interesa visibilizar y apoyar otras formas (colaborativas-no centralizadas, abiertas, y principalmente creativas) de gestionar espacios, conocimientos y recursos desde 5 ejes:
+                              <div class="list simple-list">
+                                <ul>
+                                  <li>Soberanía alimentaria y de la salud:  (huertos urbanos, usos medicinales de plantas, ..)</li>
+                                  <li>Tecnología abierta- estrategias contra la obsolescencia programada: (nuevos uso a aparatos que se consideran obsoletos, tecnología p2p y opensource)</li>
+                                  <li>Autosuficiencia energética: (biodigestores, bicimáquinas, transporte, energía solar, eólica, ..)</li>
+                                  <li>Producción local: (diseño global manufactura local, permacultura, producción cooperativa, experimentación creativa, gestión de proyectos autogestionados, ... )</li>
+                                  <li>Afectividad y Sexualidad: (inteligencia emocional, prácticas seguras, ..).</li>
+                                </ul>
+                              </div>
+                               </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <div class="accordion-item-toggle"><h3 >¿Y qué hago con esto?¿Cómo Funciona?</h3></div>
+                        <div class="accordion-item-content">
+                          <div class="block">
+                            <p class="p1">
+                              La plataforma digital es sólo para lograr concretar el encuentro físico y gestionar la información que sale de los encuentros para un posterior uso y replicación.
+                              El objetivo es visibilizar que muchos conocimientos están muy cerca en la gente que conocemos y que aprender estas destrezas abren nuestros campos de acción.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <div class="accordion-item-toggle"><h3>¿Más Información? Enlaces Adicionales</h3></div>
+                        <div class="accordion-item-content">
+                          <div class="block">
+                            <p class="p1">
+                              Puede visitar: <a class="link external" href="https://www.facebook.com/pg/benkiop2p">Nuestra Página de Fácebook donde publicamos los eventos que organizamos</a> <br>
+                              o visitar nuestros canales y grupo en Telegram.<br>
+                              <b>Canales:</b> <br>
+                              <a class="link external" href="https://t.me/benkiokm">Canal de Recursos Educativos Abiertos en Imágenes y Gifs</a>
+                              <a class="link external" href="https://t.me/eventoscr">Eventos Culturales Gratuitos</a>
+                              <b>Grupo:</b> <a class="link external" href="https://t.me/benkioim">@benkioim</a><br>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <div class="accordion-item-toggle"><h3>Consultas o Reportes</h3></div>
+                        <div class="accordion-item-content">
+
+                          <div class="block">
+                            <form action="https://formspree.io/benkiop2p@gmail.com"
+                            method="POST">
+                            <input type="text" name="name" placeholder="Nombre">
+                            <input type="email" name="_replyto" placeholder="Tu Correo">
+                            <textarea name="consulta" placeholder="Consulta"></textarea>
+                            <input type="submit" value="Enviar">
+                          </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <!--<div class="block-title text-align-center">Bonus</div>
+            <div class="block">
+              <div class="">
+                <div class="col-45">
+                    <a href="#" class="button  popup-open" data-popup="#eventosPU">Grupos en Meetup</a>
+                </div>
+                <div class="col-45">
+                  <a href="#" class="button  popup-open" data-popup="#meetupPU"></a>
+                </div>
+              </div>-->
 
 
-        });
+            </div>
+          </div>
+        </div>
+      </div>
 
 
+      <!--Popups-->
+      <div class="popup" id="appPU">
+        <div class="view">
+          <div class="page">
+            <div class="navbar gradiente">
+              <div class="navbar-inner">
+                <div class="title">Apps y Servicios Colaborativos</div>
+                <div class="right">
+                  <a href="#" class="link popup-close">x</a>
+                </div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="block">
+                <form class="searchbar">
+                  <input type="search" id="search" onkeyup="buscar()" placeholder="Buscar">
+                </form>
+                <div class="block-strong">
+                  <div class="list">
+                    <ul class="accordion-list" id="appContainer">
+                      <script id="appSW" type="text/x-handlebars-template">
+                      <li class="accordion-item">
+                        <div class="accordion-item-toggle"><span><b>{{cells.Nombre}}</b><span></div>
+                        <div class="accordion-item-content"><p>{{cells.Description}}</p>
+                          <br>
+                          <a class="link external" href="{{cells.Web}}">Enlace</a>
+                        <div class="block-footer"></div>
+                      </div>
+                    </li>
+                        </script>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="popup" id="baPU">
+        <div class="view">
+          <div class="page">
+            <div class="navbar gradiente">
+              <div class="navbar-inner">
+                <div class="title">Bibliotecas y Recursos Abiertos</div>
+                <div class="right">
+                  <a href="#" class="link popup-close">x</a>
+                </div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="block">
+
+                <form class="searchbar">
+                  <input type="search" id="searchBA" onkeyup="buscarBA()" placeholder="Buscar">
+                </form>
+                <div class="list">
+                  <ul id="baContainer">
+                    <script id="baSW" type="text/x-handlebars-template">
+                      <li class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title"><a class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
+                        </div>
+                      </li>
+                    </script>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup" id="irPU">
+        <div class="view">
+          <div class="page">
+            <div class="navbar gradiente">
+              <div class="navbar-inner">
+                <div class="title">Colectivos e Iniciativas Relacionadas</div>
+                <div class="right">
+                  <a href="#" class="link popup-close">x</a>
+                </div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="block">
+
+                <form class="searchbar">
+                  <input type="search" id="searchIR" onkeyup="buscarIR()" placeholder="Buscar">
+                </form>
+                <div class="list">
+                  <ul id="irContainer">
+                    <script id="irSW" type="text/x-handlebars-template">
+                      <li class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title"><a class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
+                        </div>
+                      </li>
+                    </script>
+                  </ul>
+                </div>
 
 
-     </script>
-   </footer>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup" id="sePU">
+        <div class="view">
+          <div class="page">
+            <div class="navbar gradiente">
+              <div class="navbar-inner">
+                <div class="title">Sitios Educativos En Línea - DIY</div>
+                <div class="right">
+                  <a href="#" class="link popup-close">x</a>
+                </div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="block">
+
+                <div class="list">
+                  <ul id="seContainer">
+                    <script id="seSW" type="text/x-handlebars-template">
+                      <li class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title"><a class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
+                        </div>
+                        <div class="item-inner">
+                          <div class="chip color-red">
+                            <div class="chip-label text-align-right">{{cells.Category}}</div>
+                          </div>
+                        </div>
+                      </li>
+                    </script>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup" id="hdPU">
+        <div class="view">
+          <div class="page">
+            <div class="navbar gradiente">
+              <div class="navbar-inner">
+                <div class="title">Herramientas Digitales P2P y Opensource</div>
+                <div class="right">
+                  <a href="#" class="link popup-close">x</a>
+                </div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="block">
+
+                <form class="searchbar">
+                  <input type="search" id="searchSE" onkeyup="buscarSE()" placeholder="Buscar">
+                </form>
+                <div class="list">
+                  <ul id="hdContainer">
+                    <script id="hdSW" type="text/x-handlebars-template">
+                      <li class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title"><a class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
+                        </div>
+                      </li>
+                    </script>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--<div class="popup" id="ilPU">
+      <div class="view">
+        <div class="page">
+          <div class="navbar gradiente">
+            <div class="navbar-inner">
+              <div class="title">Iniciativas Locales</div>
+              <div class="right">
+                <a href="#" class="link popup-close">x</a>
+              </div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">
+
+              <form class="searchbar">
+                    <input type="search" id="searchSE" onkeyup="buscarIL()" placeholder="Buscar">
+              </form>
+              <div class="list">
+                <ul id="ilContainer">
+                  <script id="ilSW" type="text/x-handlebars-template">
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title"><a class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
+                    </div>
+                  </li>
+                </script>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>-->
+      <!--Filter map-->
+      <div class="popup" id="mapFilterPU">
+        <div class="view">
+          <div class="page">
+            <div class="navbar gradiente">
+              <div class="navbar-inner">
+                <div class="title">Filtrar Mapa por Categoría o Distancia</div>
+                <div class="right">
+                  <a href="#" class="link popup-close">x</a>
+                </div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="block-title">Categorías</div>
+              <div class="block">
+                <div class="list simple-list">
+                  <ul id="filters">
+                  </ul>
+                </div>
+
+              </div>
+              <div class="block-title">Distancia </div>
+              <div class="slidecontainer">
+                <input id="slider" type="range" min="1" max="50" value="10" class="slider">
+              </div>
+
+              <div class="row">
+                <div class="col-50">
+                </div>
+                <div class="col-50">
+                  <input type="text" id="distancia">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="popup" id="icFilterPU">
+        <div class="view">
+          <div class="page">
+            <div class="navbar gradiente">
+              <div class="navbar-inner">
+                <div class="title">Filtrar Intercambios</div>
+                <div class="right">
+                  <a href="#" class="link popup-close">x</a>
+                </div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="block-title">Categorías</div>
+              <div class="block">
+                <div class="list simple-list">
+                  <ul id="filtros">
+                    <li>
+                      <select id="icCategorias" placeholder="Escoja la Categoría Deseada.">
+                              <option value="Todas">Todos Los Intercambios</option>
+                              <option value="Musica">Música</option>
+                              <option value="Escritura-Literatura">Escritura y Literatura</option>
+                              <option value="Computadoras-Móviles">Computadoras y Móviles</option>
+                              <option value="Ingenierías Aplicadas">Ingenierías Aplicadas</option>
+                              <option value="Juegos">Juegos</option>
+                              <option value="Drama-Teatro">Drama, Teatro, Performance</option>
+                              <option value="Salud-Medicina Natural">Salud y Medicina Natural</option>
+                              <option value="Visuales-Diseño">Artes Visuales y Diseño</option>
+                              <option value="Cocina">Cocina</option>
+                              <option value="Agricultura-Permacultura">Agricultura y Permacultura</option>
+                              <option value="Ropa">Ropa</option>
+                              <option value="Danza-Baile Popular">Danza y Baile Popular</option>
+                              <option value="Artesanía">Artesanía</option>
+                              <option value="Alternativo">Alternativo</option>
+                            </select>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- FORMS-->
+      <div class="popup" id="icFormPU">
+        <div class="view">
+          <div class="page">
+            <div class="navbar gradiente">
+              <div class="navbar-inner">
+                <div class="title">Ingresar Intercambio</div>
+                <div class="right">
+                  <a href="#" class="link popup-close">x</a>
+                </div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="block">
+
+                <form action="https://docs.google.com/forms/d/e/1FAIpQLScrRsBEZbcPJXKjMBVuah-LuPNkBwzTEJ-CYxKHtpTkwte49A/formResponse" method="POST" id="icForm" target="hidden-formic" onsubmit="completada()">
+                  <div class="list inset">
+                    <ul>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.1464014488" value="" id="entry_1464014488" title="" placeholder="Nombre Persona que Facilita" required validate/>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="radio" name="entry.1084130283" value="Individuo" id="g1084130283-" role="radio" /> Individuo
+                        <input type="radio" name="entry.1084130283" value="Grupo Independiente"  id="g1084130283--" role="radio" /> Grupo Independiente
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.657103890" value="" id="entry_657103890" title="" placeholder="Contacto | Número Telefónico | Email | RRSS" required validate/>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.136457736" value="" id="entry_136457736" title="" placeholder="Area de Encuentro (Provincias)" required validate/>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.1063447620" value="" id="entry_1063447620" title="" placeholder="Título de la Actividad" required validate/>
+                      </li>
+                      <li class="item-content item-input">
+                        <select name="entry.1374591173" id="entry_1374591173" required validate>
+                          <option value="">Elegir Categoría de Actividad </option>
+                          <option value="Música">Música</option>
+                          <option value="Escritura-Literatura">Escritura y Literatura</option>
+                          <option value="Computadoras-Móviles">Computadoras y Móviles</option>
+                          <option value="Ingenierías Aplicadas">Ingenierías Aplicadas</option>
+                          <option value="Juegos">Juegos</option>
+                          <option value="Drama-Teatro">Drama, Teatro, Performance</option>
+                          <option value="Salud-Medicina Natural">Salud y Medicina Natural</option>
+                          <option value="Visuales-Diseño">Artes Visuales y Diseño</option>
+                          <option value="Cocina">Cocina</option>
+                          <option value="Agricultura-Permacultura">Agricultura y Permacultura</option>
+                          <option value="Ropa">Ropa</option>
+                          <option value="Danza-Baile Popular">Danza y Baile Popular</option>
+                          <option value="Artesanía">Artesanía</option>
+                          <option value="Otro">Alternativo</option>
+                        </select>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.914983273" value="" id="entry_914983273" title="" placeholder="Descripción" required validate/>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.1694508174" value="" id="entry.1694508174" title="" placeholder="Requerimientos Materiales o Técnicos" required validate/>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.2102197382" value="" id="entry.2102197382" title="" placeholder="Tiempo Aproximado de Actividad"required validate />
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.1546255667" value="" id="entry.1546255667" title="" placeholder="Fecha" required validate/>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.653058595" value="" id="entry_653058595" title="" placeholder="Lugar Actividad" />
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.51681915" value="" id="entry_51681915" title="" placeholder="Comentarios Adicionales" />
+                      </li>
+                      <input name="fvv" value="1" type="hidden">
+                      <input name="draftResponse" value="[null,null,"6813267943109667603"]" type="hidden">
+                      <input name="pageHistory" value="0" type="hidden">
+                      <input name="fbzx" value="6813267943109667603" type="hidden">
+                      <input class="button button-fill" type="submit" name="submit" value="Agregar Intercambio" id="ss-submit">
+                    </ul>
+                    </div>
+                  </form>
+                  <iframe style="display:none" name="hidden-formic"></iframe>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup" id="espFormPU">
+        <div class="view">
+          <div class="page">
+            <div class="navbar gradiente">
+              <div class="navbar-inner">
+                <div class="title">Ingresar Espacio</div>
+                <div class="right">
+                  <a href="#" class="link popup-close">x</a>
+                </div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="block">
+                <form action="https://docs.google.com/forms/d/e/1FAIpQLSdYpO5rK64BSb7LkEWs7npox8KqXV9IrlUecyokBfB9to0Gjw/formResponse" method="POST" id="espForm" target="hidden-formE" onsubmit="completada()">
+                  <div class="list inset">
+                    <ul>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.125265990" value="" id="entry_125265990" title="" placeholder="Nombre" required validate/>
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <select name="entry.1900596370" id="entry_1900596370" required validate>
+                          <option value="">Elegir Categoría</option>
+                          <option value="CasaCultural">CasaCultural</option>
+                          <option value="FabLab">FabLab</option>
+                          <option value="Cafe">Cafe</option>
+                          <option value="Museo">Museo</option>
+                          <option value="Biblioteca">Biblioteca</option>
+                          <option value="HostalAbierto">HOstalAbierto</option>
+                          <option value="CoworkingSpace">CoworkingSpace</option>
+                          <option value="CentroCreativon">CentroCreativo</option>
+                          <option value="Taller">Taller</option>
+                          <option value="Abandonado/Okupable">Abandonado/Okupable</option>
+                        </select>
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                          <input type="text" name="entry.609986878" value="" id="entry_609986878" title="" placeholder="Descripcion" required validate/>
+                          <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <select name="entry.366304145" id="entry_366304145">
+                          <option value="">Elegir Ciudad</option>
+                          <option value="San José">San José</option>
+                          <option value="Cartago">Cartago</option>
+                          <option value="Heredia">Heredia</option>
+                          <option value="Alajuela">Alajuela</option>
+                          <option value="Puntarenas">Puntarenas</option>
+                          <option value="Limón">Limón</option>
+                          <option value="Guanacaste">Guana</option>
+                        </select>
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.1986629409" value="" id="entry_1986629409" title="" placeholder="Dirección" required validate/>
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.1148716183" value="" id="entry_1148716183" title="" placeholder="Coordenadas Latitud" />
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.2042047745" value="" id="entry_2042047745" title="" placeholder="Coordenadas Longitud"/>
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.1579569077" value="" id="entry_1579569077" title="" placeholder="Horario" validate/>
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.195462336" value="" id="entry_195462336" title="Horario" placeholder="Teléfono" validate />
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="email" name="entry.389113180" value="" id="entry_3891131809" title="" placeholder="Email" validate/>
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.135160518" value="" id="eentry_135160518" title="" placeholder="Website" />
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.507022669" value="" id="entry_507022669" title="" placeholder="Wifi"/>
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.876298738" value="" id="entry_8762987389" title="" placeholder="Mesas Disponibles"/>
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.107295174" value="" id="entry_107295174" title="" placeholder="Tamaño Aproximado"/>
+                        <div class="item-input-info"></div>
+                      </li>  <input name="fvv" value="1" type="hidden">
+
+                      <input name="draftResponse" value="[null,null,&quot;-8566223155639321553&quot;]" type="hidden">
+                      <input name="pageHistory" value="0" type="hidden">
+                      <input name="fbzx" value="-8566223155639321553" type="hidden">
+                      <input class="button button-fill" type="submit" name="submit" value="Agregar Espacio" id="ss-submit">
+                    </ul>
+                  </div>
+                </form>
+                <iframe style="display:none" name="hidden-formE"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup" id="usrFormPU">
+        <div class="view">
+          <div class="page">
+            <div class="navbar gradiente">
+              <div class="navbar-inner">
+                <div class="title">Ingresar Usuario</div>
+                <div class="right">
+                  <a href="#" class="link popup-close">x</a>
+                </div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="block">
+
+                <form action="https://docs.google.com/forms/d/e/1FAIpQLSeIy5RIj-52IpBm2Si9Wsc5nTqMxq3MzWhZpqd3tFOP7NPbkg/formResponse" method="POST" id="usrForm" target="hidden-formU" onsubmit="completada()">
+                  <div class="list inset">
+                    <ul>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.1826847759" value="" id="entry_1826847759" title="" placeholder="Nombre" required validate/>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="email" name="entry.893784051" value="" id="entry_893784051" title="" placeholder="Contacto | Num Teléfono | Email" required validate/>
+
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="radio" name="entry.567057796" value="Individuo" id="gentry.567057796-" role="radio" required validate/> Individuo
+                        <input type="radio" name="entry.567057796" value="Grupo Independiente"  id="gentry.567057796--" role="radio" required validate/> Grupo Independiente
+
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">
+                        <input type="text" name="entry.169087010" value="" id="entry_169087010" title="" placeholder="Provincia de Residencia - Movilidad" required validate/>
+
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">Intereses</li>
+                      <li class="item-content item-input">
+                        <input type="checkbox" name="entry.1988118540" value="Intercmabiar"  required validate/> Intercambiar <br>
+                        <input type="checkbox" name="entry.1988118540" value="Aprender"   required validate/> Aprender <br>
+                        <input type="checkbox" name="entry.1988118540" value="Facilitar"  required validate/> Facilitar
+
+                        <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input">Ejes de Interés</li>
+                      <li class="item-content item-input">
+                          <input type="checkbox" name="entry.1636980424" value="Tecnología Abierta y Estrategias Contra La Obsolescencia" required validate/> Tecnología Abierta y Estrategias Contra La Obsolescencia <br>
+                      </li>
+
+                      <li class="item-content item-input">
+                          <input type="checkbox" name="entry.1636980424" value="Producción y Gestión Colaborativa-Cooperativa"  required validate/> Producción y Gestión Colaborativa-Cooperativa
+                      </li>
+                      <li class="item-content item-input">
+                          <input type="checkbox" name="entry.1636980424" value="Soberanía Alimenticia y de la Salud"  required validate/> Soberanía Alimenticia y de la Salud
+                      </li>
+                      <li class="item-content item-input text-align-left">
+                          <input type="checkbox" name="entry.1636980424" value="Afectividad y Sexualidad"   required validate/> Afectividad y Sexualidad <br>
+                      </li>
+                      <li class="item-content item-input text-align-left">
+                          <input type="checkbox" name="entry.1636980424" value="Autosuficiencia Energética"  required validate/> Autosuficiencia Energética
+                          <div class="item-input-info"></div>
+                      </li>
+                      <li class="item-content item-input ">
+                        <input type="text" name="entry.573923908" value="" id="entry_573923908" title="" placeholder="Habilidades que desea Compartir" required validate/>
+
+                        <div class="item-input-info"></div>
+                      </li>
+
+                      <input name="fvv" value="1" type="hidden">
+                      <input name="draftResponse" value="[null,null,"1638873797759439925"]" type="hidden">
+                      <input name="pageHistory" value="0" type="hidden">
+                      <input name="fbzx" value="1638873797759439925" type="hidden">
+                      <input class="button button-fill" type="submit" name="submit" value="Agregar Usuario" id="ss-submit">
+                    </ul>
+                  </div>
+                </form>
+                <iframe style="display:none" name="hidden-formU"></iframe>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- page end -->
+    </div>
+
+
+  </div>
+  <script>
+
+/*var myVar;
+
+function cargarLoader() {
+    myVar = setTimeout(showPage, 2000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("app").style.display = "block";
+}*/
+
+  function completada() {
+    alert("Formulario Enviado");
+  }
+  </script>
+  <!-- Cordova -->
+  <!--
+  <script src="cordova.js"></script>
+  -->
+  <script src="js/jquery.min.js" charset="utf-8"></script>
+  <!-- Framework7 library -->
+  <script src="js/framework7.js"></script>
+
+  <!-- App routes -->
+  <script src="js/routes.js"></script>
+
+  <!-- Path to your custom app scripts -->
+  <script src="js/app.js"></script>
+
+  <!-- Map -->
+  <script src="js/leaflet.js" charset="utf-8"></script>
+  <script src="js/leaflet-sidebar.js" charset="utf-8"></script>
+  <script src="js/leaflet.markercluster.js" charset="utf-8"></script>
+  <script src="js/papaparse.min.js" charset="utf-8"></script>
+  <script src="js/geojson.min.js" charset="utf-8"></script>
+  <script src="js/map.js" charset="utf-8"></script>
+  <script src="js/handlebars.min.js" charset="utf-8"></script>
+  <script src="js/sheetrock.min.js" charset="utf-8"></script>
+  <script src="js/jqgoogleforms.js" charset="utf-8"></script>
+  <script src="js/jqformvalidator.min.js" charset="utf-8"></script>
+
+  <script src="js/data.js" charset="utf-8"></script>
+
+
+  <script type="text/javascript">
+
+  </script>
+
+
+</body>
+
 </html>
