@@ -2,18 +2,35 @@ var csvRemote = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSrJY9F0OPH1gx_
 var csv = "data/data.csv"
 var latDefault = 9.928102283140376
 var longDefault = -84.11596298217775
-
-var map = L.map('map', {
-  center: [9.94, -84.09],
-  zoom: 13
-})
-map.locate({
-  setView: true,
-  maxZoom: 13
-})
 var basemap = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png', {
   maxZoom: 18
 })
+var map = L.map('map', {
+});
+
+function initMap () {
+  setTimeout(function () {
+    map.setView ([9.94, -84.09],13)
+
+
+    map.locate({
+      setView: true,
+      maxZoom: 13
+    })
+    basemap.addTo(map);
+    Papa.parse(csvRemote, {
+        download: true,
+        header: true,
+        complete: function(results) {
+          var data = results.data
+          //console.log(results.data)
+          setData(data)
+        }
+      })
+  }, 500);
+}
+
+
 
 basemap.addTo(map);
 map.on('locationfound', onLocationFound)
@@ -25,7 +42,7 @@ function crearLayer(filter){
       header: true,
       complete: function(results) {
         var data = results.data
-        console.log(results.data)
+        //console.log(results.data)
         setData(data,filter)
       }
     })
@@ -37,22 +54,14 @@ function crearLayerDistancia(km){
       header: true,
       complete: function(results) {
         var data = results.data
-        console.log(results.data)
+        //console.log(results.data)
         setDataDistancia(data,km)
       }
     })
 }
 
 
-Papa.parse(csv, {
-    download: true,
-    header: true,
-    complete: function(results) {
-      var data = results.data
-      console.log(results.data)
-      setData(data)
-    }
-  })
+
 
 
 function setData(jsonParsed,filter) {
@@ -60,7 +69,7 @@ function setData(jsonParsed,filter) {
     Point: ['lat', 'long'],
     include: ["name", "city", "tipo", "description", "horario", "phone", "email", "wifi", "mesasdisponibles", "tamañoaprox"]
   })
-  console.log(result)
+  //console.log(result)
   setgeoJsonLayer(result,filter)
 }
 
@@ -69,7 +78,7 @@ function setDataDistancia(jsonParsed,km) {
     Point: ['lat', 'long'],
     include: ["name", "city", "tipo", "description", "horario", "phone", "email", "wifi", "mesasdisponibles", "tamañoaprox"]
   })
-  console.log(result)
+  //console.log(result)
   setgeoJsonLayerDistancia(result,km)
 }
 
@@ -79,12 +88,12 @@ function setgeoJsonLayer(data, filter) {
     layerData = L.geoJson(data, {
 
       filter: function(feature, layer) {
-        console.log(filter)
+        //console.log(filter)
         return feature.properties.tipo == filter;
       },
       onEachFeature: onEachFeature
     })
-    console.log('passs')
+    //console.log('passs')
   } else {
     layerData = L.geoJson(data, {
       onEachFeature: onEachFeature
@@ -92,8 +101,8 @@ function setgeoJsonLayer(data, filter) {
   }
 
   layerData.addTo(map)
-  console.log(layerData)
-  console.log(map.hasLayer(layerData))
+  //console.log(layerData)
+  //console.log(map.hasLayer(layerData))
 }
 
 function setgeoJsonLayerDistancia(data, km) {
@@ -108,7 +117,7 @@ function setgeoJsonLayerDistancia(data, km) {
         onEachFeature: onEachFeature
 
     })
-    console.log('passs')
+    //console.log('passs')
   } else {
     layerDist = L.geoJson(data, {
       onEachFeature: onEachFeature
@@ -116,14 +125,14 @@ function setgeoJsonLayerDistancia(data, km) {
   }
 
   layerDist.addTo(map)
-  console.log(layerData)
-  console.log(map.hasLayer(layerData))
+  //console.log(layerData)
+  //console.log(map.hasLayer(layerData))
 }
 
 function onLocationFound(e) {
   latDefault = e.latlng.lat
   longDefault = e.latlng.lng
-  console.log(e.latlng.lng + " " + e.latlng.lat)
+  //console.log(e.latlng.lng + " " + e.latlng.lat)
 }
 
 
@@ -132,14 +141,14 @@ function onLocationFound(e) {
 function whenClicked(e) {
   // e = event
   sidebar.toggle();
-  console.log(e);
+  //console.log(e);
 }
 
 function displayinfo(info) {
-  console.log(info)
+  //console.log(info)
   x = document.getElementById('title')
   x.innerHTML = info.properties.name
-  console.log(info.properties.name)
+  //console.log(info.properties.name)
   x = document.getElementById('tag')
   x.innerHTML = info.properties.tipo
   x = document.getElementById('description')
@@ -163,13 +172,15 @@ function displayinfo(info) {
 }
 
 function onEachFeature(feature, layer) {
+
   layer.on(
     'click',
     function(e) {
       whenClicked(e)
       // sidebar.setContent(info)
+
       displayinfo(feature)
-      console.log(feature)
+      //console.log(feature)
     })
 }
 
@@ -182,27 +193,25 @@ var sidebar = L.control.sidebar('sidebar', {
 map.addControl(sidebar)
 //sidebar.hide()
 
-map.on('click', function() {
-  sidebar.hide();
-})
+
 sidebar.on('show', function() {
-  console.log('Sidebar will be visible.');
+  //console.log('Sidebar will be visible.');
 })
 sidebar.on('shown', function() {
-  console.log('Sidebar is visible.');
+  //console.log('Sidebar is visible.');
 })
 sidebar.on('hide', function() {
-  console.log('Sidebar will be hidden.');
+  //console.log('Sidebar will be hidden.');
 })
 sidebar.on('hidden', function() {
-  console.log('Sidebar is hidden.');
+  //console.log('Sidebar is hidden.');
 })
 
 
 var slider = document.getElementById("slider")
 slider.addEventListener('change', update)
 //layerDistancia.addTo(map)
-console.log("valor" + slider.value.toString())
+//console.log("valor" + slider.value.toString())
 
 function update() {
   resetearLayers()
@@ -210,7 +219,7 @@ function update() {
 
   document.getElementById("distancia").value = slider.value
   crearLayerDistancia(slider.value)
-  console.log("valor" + slider.value.toString())
+  //console.log("valor" + slider.value.toString())
 
 
   }
@@ -219,7 +228,7 @@ function update() {
 
 
 map.whenReady(function(feature, layer) {
-  console.log('readdyyyy')
+  //console.log('readdyyyy')
   var types = ["Casa Cultural","Coworking Space","Fab Lab","Museo","Hostal Abierto","Centro Creativo","Cafe"]
   /* Por agregar: bibliotecas, talleres*/
   var checkboxes = []
@@ -248,7 +257,7 @@ map.whenReady(function(feature, layer) {
 
     for (var i = 0; i < checkboxes.length; i++) {
       if (checkboxes[i].checked) enabled[checkboxes[i].id] = true;
-      console.log(enabled[checkboxes[i].id])
+      //console.log(enabled[checkboxes[i].id])
 
     }
     if (checkboxes[6].id in enabled) {

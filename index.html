@@ -1,85 +1,133 @@
 <!DOCTYPE html>
-<html class="md webView device-ios device-android">
+<html class="md device-pixel-ratio-1 webView device-ios device-android device-desktop support-position-sticky">
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
   <meta charset="utf-8">
   <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#2196f3">
-  <meta name="format-detection" content="telephone=yes">
+  <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
   <title>Benkio</title>
   <link rel="icon" sizes="192x192" href="css/images/logo.png">
   <link rel="stylesheet" href="css/leaflet.css">
   <link rel="stylesheet" href="css/framework7.css">
-  <!--<link rel="stylesheet" href="css/ionicons.min.css">-->
   <link rel="stylesheet" href="css/ionicons.min.css">
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/leaflet-sidebar.css">
-  <style media="screen">
-    .gradiente {
-      /*background: linear-gradient(to right, #4776e6, #8e54e9);*/
-      /*background: linear-gradient(to right, #1a2980, #26d0ce);*/
-      background: linear-gradient(to right, #4750ff, #1fa2ff);
-    }
-  </style>
 </head>
 
-<body>
-  <!--<div id="loader"></div>-->
+<body id="bodyb" onload="cargarLoader()">
+  <div id="loader">
+    <div class="center"><img src="css/images/loader.png" alt=""></div>
+  </div>
   <div id="app" class="framework7-root">
-    <div id="loader-wrapper">
-    <div id="loader"></div>
-     <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-     </div>
+
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar"></div>
-    <!-- Left panel with cover effect-->
-    <div class="panel-backdrop" style=""></div>
-    <div class="panel panel-left panel-cover theme-dark">
-      <div class="view">
-        <div class="page">
-          <div class="navbar gradiente">
-            <div class="navbar-inner">
-              <div class="title">Usuario</div>
-            </div>
-          </div>
-          <div class="page-content">
-            <div class="block">Preferencias</div>
-            <div class="block"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--Main-->
+
+
     <!-- Views/Tabs container -->
     <div class="views tabs gradiente">
       <!-- Tabbar for switching views-tabs -->
-      <div class="toolbar tabbar-labels toolbar-bottom-md gradiente">
+      <!--<div class="toolbar tabbar-labels toolbar-bottom-md gradiente">
         <div class="toolbar-inner">
-
-          <a href="#view-pe" class="tab-link tab-link-active">
+          <a href="#home" class="tab-link tab-link-active">
+            <span class="tabbar-label"><i class="icon icon1 ion-home"></i></span>
+          </a>
+          <a href="#pencuentro" class="tab-link" onclick="initMap()">
             <span class="tabbar-label"><i class="icon icon1 ion-location"></i></span>
           </a>
-          <a href="#view-ic" class="tab-link ">
+          <a href="#intercambios" class="tab-link ">
             <span class="tabbar-label"><i class="icon icon1 ion-loop"></i></span>
           </a>
-          <a href="#view-hr" class="tab-link">
+          <a href="#hrecursos" class="tab-link">
             <span class="tabbar-label"><i class="icon icon1 ion-wrench"></i></span>
           </a>
-          <a href="#view-users" class="tab-link">
+          <a href="#usrs" class="tab-link">
             <span class="tabbar-label"><i class="icon icon1 ion-person-stalker"></i></span>
           </a>
-          <a href="#view-info" class="tab-link">
-            <span class="tabbar-label"><i class="icon icon1 ion-information-circled"></i></span>
+          <a href="#eventos" class="tab-link">
+
+            <span class="tabbar-label"><i class="icon icon1 ion-calendar"></i></span>
           </a>
-          <!--<span class="tab-link-highlight" style="width: 33.3333%; transform: translate3d(0%, 0px, 0px);"></span>-->
+        </div>
+      </div>-->
+
+<!--HOME-->
+<div id="home" class="view tab tab-active">
+      <div  class="page" data-name="home">
+        <div class="navbar gradiente">
+          <div class="navbar-inner text-align-center">
+            <div class="title sliding">Benkio</div>
+
+              <a href="#" class="button popup-open right" data-popup="#infoPU"><i class="icon icon1 ion-information-circled"></i></a>
+
+          </div>
+        </div>
+        <!-- Scrollable page content-->
+        <div class="page-content">
+          <div class="block">
+
+          <div class="">Con ustedes, Benkio. Una plataforma para la autogestión, el encuentro creativo y la formación de círculos de aprendizaje.</div>
+          <div class="block">
+            <div class="row">
+              <div class="col-100">
+                <a href="#pencuentro" class="tab-link button button-fill gradiente" onclick="initMap()">
+                  <span class="tabbar-label"><i class="icon icon1 ion-location"></i>&emsp; Puntos de Encuentro</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="row">
+              <div class="col-100">
+                <a href="#hrecursos" class="tab-link button button-fill gradiente">
+                  <span class="tabbar-label"><i class="icon icon1 ion-loop"></i> &emsp;Biblioteca y Herramientas</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="row">
+              <div class="col-100">
+                <a href="#intercambios" class="tab-link button button-fill gradiente"><i class="icon icon1 ion-loop"></i></span>&emsp;Círculos de Aprendizaje</a>
+              </div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="row">
+              <div class="col-100">
+                <a href="#eventos" class="tab-link button button-fill gradiente"><i class="icon icon1 ion-calendar"></i></span> &emsp;Eventos Culturales</a>
+              </div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="row">
+              <div class="col-100">
+                <a href="#usrs" class="tab-link button button-fill gradiente"><i class="icon icon1 ion-person-stalker"></i></span>&emsp;Usuarios</a>
+              </div>
+            </div>
+          </div>
+          <!--<div class="block">
+            <div class="row">
+              <div class="col-100">
+                <a href="#hrecursos" class="tab-link button button-fill"><i class="icon icon1 ion-information-circled"></i></span>&emsp;FAQ</a>
+              </div>
+            </div>
+          </div>-->
+          <div class="block block-strong"></div>
         </div>
       </div>
+    </div>
+  </div>
+
       <!--Puntos de Encuentro-->
-      <div id="view-pe" class="view view-main tab tab-active">
+      <div id="pencuentro" class="view tab" >
         <div class="page page-current" data-name="pe">
           <!-- Top Navbar -->
           <div class="navbar gradiente">
@@ -87,6 +135,11 @@
               <!--<a href="#" class="panel-open" data-panel="left">Filtrar Mapa</a>-->
               <a href="#" class="button popup-open" data-popup="#mapFilterPU">Filtrar</a>
               <div class="title sliding">Puntos de Encuentro</div>
+              <div class="right">
+                <a href="#home" class="tab-link button">
+                  <span class="tabbar-label"><i class="icon icon1 ion-home"></i></span>
+                </a>
+              </div>
             </div>
           </div>
           <div class="page-content">
@@ -96,7 +149,11 @@
                 <div class="block">
                   <div class="accordion-list">
                     <div class="accordion-item">
-                      <div class="accordion-item-toggle">¿Qué Encuentro Aquí?</div>
+                      <div class="accordion-item-toggle">
+                        <div class="chip color-orange">
+                          <div class="chip-label text-align-right">¿Qué Encuentro Aquí?</div>
+                        </div>
+                      </div>
                       <div class="accordion-item-content"><p>Mapeo de espacios públicos/privados en CR para la activación, creación y aprendizaje colaborativo.<br>
                       <b>Selecciona un punto en el mapa para desplegar la información </b></p></div>
                     </div>
@@ -126,24 +183,33 @@
                 </div>
                 <p><a class="link external" id="coordenadas" href="#"></a></p>
               </div>
-              <div id="map" style="height: 600px;width: 100%;"></div>
+              <div id="map" style="height: 500px;width: 100%;"></div>
             </div>
           </div>
         </div>
       </div>
       <!--Herramientas-->
-      <div id="view-hr" class="view tab">
+      <div id="hrecursos" class="view tab">
         <div class="page page-current" data-name="hr">
           <div class="navbar gradiente">
             <div class="navbar-inner sliding">
               <div class="title">Herramientas y Recursos</div>
+              <div class="right">
+                <a href="#home" class="tab-link button">
+                  <span class="tabbar-label "><i class="icon icon1 ion-home"></i></span>
+                </a>
+              </div>
             </div>
           </div>
           <div class="page-content">
             <div class="block">
               <div class="accordion-list">
                 <div class="accordion-item">
-                  <div class="accordion-item-toggle">¿Qué Encuentro Aquí?</div>
+                  <div class="accordion-item-toggle">
+                    <div class="chip color-orange">
+                      <div class="chip-label text-align-right">¿Qué Encuentro Aquí?</div>
+                    </div>
+                  </div>
                   <div class="accordion-item-content"><p> Mapeo de Iniciativas, Herramientas, Recursos, Apps, Websites para facilitar procesos creativos colaborativos y autogestivos.<br>
                   <b>Selecciona un item que te interese para desplegar la información </b></p></div>
                 </div>
@@ -153,9 +219,10 @@
               <ul class="justify-content-center">
                 <li><a href="#" class="popup-open" data-popup="#baPU">Bibliotecas y Recursos Abiertos</a></li>
                 <li><a href="#" class="popup-open" data-popup="#irPU">Iniciativas Relacionadas</a></li>
-                <li><a href="#" class="popup-open" data-popup="#sePU">Sitios Educativos En Línea-DIY</a></li>
-                <li><a href="#" class="popup-open" data-popup="#hdPU">Herramientas Digitales Opensource-P2P</a></li>
+                <li><a href="#" class="popup-open" data-popup="#sePU">Sitios Educativos En Línea</a></li>
+                <li><a href="#" class="popup-open" data-popup="#hdPU">Software Opensource y P2P</a></li>
                 <li><a href="#" class="popup-open" data-popup="#appPU">Apps y Servicios</a></li>
+                <li><a target="_blank" href="https://www.peerby.com" class="link external" >Préstamo y Alquiler de Herramientas (Inglés)</a></li>
               </ul>
             </div>
           </div>
@@ -165,12 +232,17 @@
 
 
       <!-- Intercambios -->
-      <div id="view-ic" class="view tab">
+      <div id="intercambios" class="view tab">
         <div class="page page-current" data-name="ic">
           <div class="navbar gradiente">
             <div class="navbar-inner sliding">
               <a href="#" class="button popup-open" data-popup="#icFilterPU">Filtrar </a>
               <div class="title">Ofertas de Intercambio</div>
+              <div class="right">
+                <a href="#home" class="tab-link button">
+                  <span class="tabbar-label "><i class="icon icon1 ion-home"></i></span>
+                </a>
+              </div>
             </div>
           </div>
           <div class="page-content">
@@ -180,9 +252,13 @@
                 <div class="block">
                   <div class="accordion-list">
                     <div class="accordion-item">
-                      <div class="accordion-item-toggle">¿Qué Encuentro Aquí?</div>
+                      <div class="accordion-item-toggle">
+                        <div class="chip color-orange">
+                          <div class="chip-label text-align-right">¿Qué Encuentro Aquí?</div>
+                        </div>
+                      </div>
                       <div class="accordion-item-content"><p> Acá podes encontrar ofertas y solicitudes de intercambios de conocimiento. Solo queda contactar a la persona o grupo que te interesa y agendar una fecha para el encuentro, que puede ser físico o virtual.<br>
-                      <b>Para desplegar los intercambios de su interés seleccione las categorías correspondientes </b></p></div>
+                      <b>Desliza la tarjeta hacia la izquierda para desplegar los intercambios disponibles. Puedes filtrar por categoría </b></p></div>
 
                     </div>
                   </div>
@@ -191,7 +267,7 @@
 
               <div class="block">
 
-                <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="15" class="swiper-container swiper-init demo-swiper">
+                <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="auto" data-centered-slides="true" class="swiper-container swiper-init demo-swiper">
                   <div class="swiper-pagination"></div>
 
                   <div id="exchContainer" class="swiper-wrapper">
@@ -199,22 +275,21 @@
                       <div class="swiper-slide">
                         <div class="card cardo">
                           <div class="card-header">{{cells.Nombre_Actividad}}</div>
-                          <div class="card-content card-content-padding">
+                          <div class="card-content card-content-padding text-align-left">
                             <div class="chip color-red">
                               <div class="chip-label text-align-right">{{cells.Categoría}}</div>
                             </div>
-                            <p class="date"><b>Facilita: </b>{{cells.Nombre}}</p>
-                            <p><b>Descripción: </b>{{cells.Descripción}}</p><br>
-                            <p><b>Requerimientos:</b> {{cells.Requerimientos}}</p><br>
-                            <p><b>Tiempo Aproximado: </b>{{cells.Tiempo}}</p><br>
-                            <p><b>Fecha: </b>{{cells.Fecha}}</p><br>
-                            <p><b>Lugar: </b>{{cells.Lugar}}</p><br>
-                          </div>
-                          <div class="card-footer">
-                            <div class="row">
+                            <p><b>Descripción: </b>{{cells.Descripción}}</p>
+                            <p><b>Requerimientos:</b> {{cells.Requerimientos}}</p>
+                            <p><b>Tiempo Aproximado: </b>{{cells.Tiempo}}</p>
+                            <p><b>Fecha: </b>{{cells.Fecha}}</p>
+                            <p><b>Lugar: </b>{{cells.Lugar}}</p>
+                            <br>
+                            <div class="block">
                               <div class="">
-                                <p><b>Contacto: </b>{{cells.Contacto}}</p><br>
-                                <p><b>Área de Encuentro: </b>{{cells.AreadeEncuentro}}</p><br>
+                                <p><b>Facilita: </b>{{cells.Nombre}}</p>
+                                <p><b>Contacto: </b>{{cells.Contacto}}</p>
+                                <p><b>Área de Encuentro: </b>{{cells.AreadeEncuentro}}</p> <br>
                               </div>
                             </div>
                           </div>
@@ -225,24 +300,36 @@
                 </div>
               </div>
             </div>
+            <br>
+            <br>
+            <br>
           </div>
         </div>
       </div>
 
       <!-- Users -->
-      <div id="view-users" class="view tab">
+      <div id="usrs" class="view tab">
         <div class="page page-current" data-name="usr">
           <div class="navbar gradiente">
             <div class="navbar-inner sliding">
               <div class="title">Usuarios Registrados</div>
+              <div class="right">
+                <a href="#home" class="tab-link button">
+                  <span class="tabbar-label "><i class="icon icon1 ion-home"></i></span>
+                </a>
+              </div>
             </div>
           </div>
           <div class="page-content">
             <div class="block">
               <div class="accordion-list">
                 <div class="accordion-item">
-                  <div class="accordion-item-toggle">¿Qué Encuentro Aquí?</div>
-                  <div class="accordion-item-content"><p>Una Pizarra de Personas y Colectivas Interesadas en el Intercambio de Saberes <br>
+                  <div class="accordion-item-toggle">
+                    <div class="chip color-orange">
+                      <div class="chip-label text-align-right">¿Qué Encuentro Aquí?</div>
+                    </div>
+                  </div>
+                  <div class="accordion-item-content"><p>Una Lista de Personas y Colectivas Interesadas en el Aprendizaje Colaborativo y el Intercambio de Saberes<br>
                   </p></div>
                 </div>
               </div>
@@ -251,10 +338,13 @@
               <a href="#" class="popup-open" data-popup="#usrFormPU">+</a>
                 </div>
             <div class="block">
-              <div data-space-between="10" data-direction="vertical" class="swiper-container swiper-init demo-swiper spUC">
-                <div id="usrContainer">
+
+                <div class="class="list"">
+                <ul id="usrContainer" >
+
                   <script id="usrSW" type="text/x-handlebars-template">
-                    <div class="card cardo">
+                    <li class="item-content">
+                    <div class="card cardo item-inner">
                       <div class="card-header">{{ cells.Nombre}}</div>
                       <div class="card-content card-content-padding">
                         <div class="chip color-red">
@@ -273,109 +363,96 @@
                         </div>
                       </div>
                     </div>
+
+
                   </script>
+
+                </ul>
+
+
+                </div>
+                <div class="item-content">
+                  <div class="block">
+                    <div class="block-strong">
+                      <div class="card hidden">
+                        <div class="block">
+                          <div class="accordion-list">
+                            <div class="accordion-item">
+                              <div class="accordion-item-toggle"></div>
+                              <div class="accordion-item-content"><p>
+                              <b>____________________</b></p></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       <!--Info-->
-      <div id="view-info" class="view tab">
-        <div class="page page-current" data-name="hr">
+      <div id="eventos" class="view tab">
+        <div class="page page-current" data-name="ev">
           <div class="navbar gradiente">
             <div class="navbar-inner sliding">
-              <div class="title">FAQ</div>
+              <div class="title">Eventos Culturales</div>
+              <div class="right">
+                <a href="#home" class="tab-link button">
+                  <span class="tabbar-label "><i class="icon icon1 ion-home"></i></span>
+                </a>
+              </div>
             </div>
           </div>
           <div class="page-content">
             <div class="block">
               <div class="accordion-list">
                 <div class="accordion-item">
-                  <div class="accordion-item-toggle">¿Qué Encuentro Aquí?</div>
-                  <div class="accordion-item-content"><p>Información Detallada sobre el Proyecto
-                  <b>Selecciona un item que te interese para desplegar la información </b></p></div>
+                  <div class="accordion-item-toggle">
+                    <div class="chip color-orange">
+                      <div class="chip-label text-align-right">¿Qué Encuentro Aquí?</div>
+                    </div>
+                  </div>
+                  <div class="accordion-item-content"><p>Eventos Culturales Gratuitos. Chivos, Festivales, Cine, Teatro, Manifestaciones, Talleres, Conversatorios, Circo, Fiestas, Exposiciones.
+                    </p></div>
                 </div>
               </div>
             </div>
-            <div class="block block-strong">
-              <div class="list links-list">
+            <div class="block">
+              <ul id="evContainer" class="row">
+                <script id="evSW" type="text/x-handlebars-template">
+                <li class="col-100 tablet-50">
+                  <div class="card demo-card-header-pic" >
 
-                    <div class="accordion-list">
-                      <div class="accordion-item">
-                        <div class="accordion-item-toggle"><h3>¿Qué es Benkio</h3></div>
-                        <div class="accordion-item-content">
-                          <div class="block">
-                            <p class="p1">En pocas palabras: una plataforma para la autogestión. Benkio es una plataforma cooperativa que facilita herramientas para el fortalecimiento de comunidades creativas interesadas en el aprendizaje y producción común/colaborativa. Su meta es facilitar la gestión de encuentros de conocimiento (conocimiento científico aplicado y saber popular) o hands-on skill sharing, conectando, de manera distribuida, a agentes (grupos independentes y personas interesadas), espacios (comercios locales, espacios públicos subutilizados y de otra índole) y herramientas (cosas tan simples como una mesa, una silla, y una conexión a internet, hasta el acceso a un cautín, documentos técnicos, un serrucho o una impresora 3d).</p>
-                            <br>
-                            <p class="p1">Nos interesa visibilizar y apoyar otras formas (colaborativas-no centralizadas, abiertas, y principalmente creativas) de gestionar espacios, conocimientos y recursos desde 5 ejes:
-                              <div class="list simple-list">
-                                <ul>
-                                  <li>Soberanía alimentaria y de la salud:  (huertos urbanos, usos medicinales de plantas, ..)</li>
-                                  <li>Tecnología abierta- estrategias contra la obsolescencia programada: (nuevos uso a aparatos que se consideran obsoletos, tecnología p2p y opensource)</li>
-                                  <li>Autosuficiencia energética: (biodigestores, bicimáquinas, transporte, energía solar, eólica, ..)</li>
-                                  <li>Producción local: (diseño global manufactura local, permacultura, producción cooperativa, experimentación creativa, gestión de proyectos autogestionados, ... )</li>
-                                  <li>Afectividad y Sexualidad: (inteligencia emocional, prácticas seguras, ..).</li>
-                                </ul>
-                              </div>
-                               </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="accordion-item">
-                        <div class="accordion-item-toggle"><h3 >¿Y qué hago con esto?¿Cómo Funciona?</h3></div>
-                        <div class="accordion-item-content">
-                          <div class="block">
-                            <p class="p1">
-                              La plataforma digital es sólo para lograr concretar el encuentro físico y gestionar la información que sale de los encuentros para un posterior uso y replicación.
-                              El objetivo es visibilizar que muchos conocimientos están muy cerca en la gente que conocemos y que aprender estas destrezas abren nuestros campos de acción.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="accordion-item">
-                        <div class="accordion-item-toggle"><h3>¿Más Información? Enlaces Adicionales</h3></div>
-                        <div class="accordion-item-content">
-                          <div class="block">
-                            <p class="p1">
-                              Puede visitar: <a class="link external" href="https://www.facebook.com/pg/benkiop2p">Nuestra Página de Fácebook donde publicamos los eventos que organizamos</a> <br>
-                              o visitar nuestros canales y grupo en Telegram.<br>
-                              <b>Canales:</b> <br>
-                              <a class="link external" href="https://t.me/benkiokm">Canal de Recursos Educativos Abiertos en Imágenes y Gifs</a>
-                              <a class="link external" href="https://t.me/eventoscr">Eventos Culturales Gratuitos</a>
-                              <b>Grupo:</b> <a class="link external" href="https://t.me/benkioim">@benkioim</a><br>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="accordion-item">
-                        <div class="accordion-item-toggle"><h3>Consultas o Reportes</h3></div>
-                        <div class="accordion-item-content">
+                    <div class="card-headero align-items-flex-end"><img class="center evIMG" src="{{cells.URL}}" alt=""></div>
+                    <div class="card-content card-content-padding">
 
-                          <div class="block">
-                            <form action="https://formspree.io/benkiop2p@gmail.com"
-                            method="POST">
-                            <input type="text" name="name" placeholder="Nombre">
-                            <input type="email" name="_replyto" placeholder="Tu Correo">
-                            <textarea name="consulta" placeholder="Consulta"></textarea>
-                            <input type="submit" value="Enviar">
-                          </form>
-                          </div>
+                      <p id="caption" class="">{{cells.Caption}}</p>
+                      </div>
+                  </div>
+                </li>
+              </script>
+
+              </ul>
+            </div>
+            <div class="item-content">
+              <div class="block">
+                <div class="block-strong">
+                  <div class="card hidden">
+                    <div class="block">
+                      <div class="accordion-list">
+                        <div class="accordion-item">
+                          <div class="accordion-item-toggle"></div>
+                          <div class="accordion-item-content"><p>
+                          <b>____________________</b></p></div>
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <!--<div class="block-title text-align-center">Bonus</div>
-            <div class="block">
-              <div class="">
-                <div class="col-45">
-                    <a href="#" class="button  popup-open" data-popup="#eventosPU">Grupos en Meetup</a>
-                </div>
-                <div class="col-45">
-                  <a href="#" class="button  popup-open" data-popup="#meetupPU"></a>
-                </div>
-              </div>-->
 
 
             </div>
@@ -385,7 +462,107 @@
 
 
       <!--Popups-->
-      <div class="popup" id="appPU">
+      <div class="popup popup-tablet-fullscreen" id="infoPU">
+        <div class="view">
+          <div class="page">
+            <div class="navbar gradiente">
+              <div class="navbar-inner">
+                <div class="title">FAQ</div>
+                <div class="right">
+                  <a href="#" class="link popup-close">x</a>
+                </div>
+
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="block">
+                <div class="accordion-list">
+                  <div class="accordion-item">
+                    <div class="accordion-item-toggle">
+                      <div class="chip color-orange">
+                        <div class="chip-label text-align-right">¿Qué Encuentro Aquí?</div>
+                      </div>
+                    </div>
+                    <div class="accordion-item-content"><p>Información Detallada sobre el Proyecto <br>
+                    <b>Selecciona un item que te interese para desplegar la información </b></p></div>
+                  </div>
+                </div>
+              </div>
+              <div class="block block-strong">
+                <div class="list links-list">
+
+                      <div class="accordion-list">
+                        <div class="accordion-item">
+                          <div class="accordion-item-toggle"><h3>¿Qué es Benkio?</h3></div>
+                          <div class="accordion-item-content">
+                            <div class="block">
+                              <p class="p1">En pocas palabras: una plataforma para la autogestión y el encuentro. Benkio es una plataforma cooperativa que facilita herramientas para el fortalecimiento de comunidades creativas interesadas en el aprendizaje y producción común/colaborativa. Su meta es facilitar la gestión de encuentros de conocimiento (conocimiento científico aplicado y saber popular) o hands-on skill sharing, conectando, de manera distribuida, a agentes (grupos independentes y personas interesadas), espacios (comercios locales, espacios públicos subutilizados y de otra índole) y herramientas (cosas tan simples como una mesa, una silla, y una conexión a internet, hasta el acceso a un cautín, documentos técnicos, un serrucho o una impresora 3d).</p>
+                              <br>
+                              <p class="p1">Nos interesa visibilizar y apoyar otras formas (colaborativas-no centralizadas, abiertas, y principalmente creativas) de gestionar espacios, conocimientos y recursos desde 5 ejes:
+                                <div class="list simple-list">
+                                  <ul>
+                                    <li class="item-text-wrap">Soberanía Alimentaria y de la Salud</li>
+                                    <li class="item-text-wrap">Tecnología Abierta y Obsolescencia</li>
+                                    <li class="item-text-wrap">Autosuficiencia Energética</li>
+                                    <li class="item-text-wrap">Producción Local</li>
+                                    <li class="item-text-wrap">Afectividad y Sexualidad</li>
+                                  </ul>
+                                </div>
+                                 </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <div class="accordion-item-toggle"><h3 >¿Y qué hago con esto?¿Cómo Funciona?</h3></div>
+                          <div class="accordion-item-content">
+                            <div class="block">
+                              <p class="p1">
+                                La plataforma digital es sólo para lograr concretar el encuentro físico y gestionar la información que sale de los encuentros para un posterior uso y replicación.
+                                El objetivo es visibilizar que muchos conocimientos están muy cerca en la gente que conocemos y que aprender estas destrezas abren nuestros campos de acción.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <div class="accordion-item-toggle"><h3>¿Más Información? Enlaces Adicionales</h3></div>
+                          <div class="accordion-item-content">
+                            <div class="block">
+                              <p class="p1">
+                                Puede visitar: <a target="_blank" class="link external" href="https://www.facebook.com/pg/benkiop2p">Nuestra Página de Fácebook </a> <br>
+                                donde publicamos los eventos que organizamos
+                                o visitar nuestros canales y grupo en Telegram.<br>
+                                <b>Canales:</b> <br>
+                                <a class="link external" href="https://t.me/benkiokm">Recursos Educativos en Imagen</a>
+                                <a target="_blank" class="link external" href="https://t.me/eventoscr">Eventos Culturales Gratuitos</a>
+                                <a target="_blank" class="link external" href="https://t.me/benkioim">Grupo y Chat</a><br>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <div class="accordion-item-toggle"><h3>Consultas o Reportes</h3></div>
+                          <div class="accordion-item-content">
+
+                            <div class="block">
+                              <form action="https://formspree.io/benkiop2p@gmail.com"
+                              method="POST">
+                              <input type="text" name="name" placeholder="Nombre">
+                              <input type="email" name="_replyto" placeholder="Tu Correo">
+                              <textarea name="consulta" placeholder="Consulta"></textarea>
+                              <input type="submit" value="Enviar">
+                            </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="popup popup-tablet-fullscreen" id="appPU">
         <div class="view">
           <div class="page">
             <div class="navbar gradiente">
@@ -394,6 +571,7 @@
                 <div class="right">
                   <a href="#" class="link popup-close">x</a>
                 </div>
+
               </div>
             </div>
             <div class="page-content">
@@ -401,29 +579,34 @@
                 <form class="searchbar">
                   <input type="search" id="search" onkeyup="buscar()" placeholder="Buscar">
                 </form>
-                <div class="block-strong">
+
                   <div class="list">
                     <ul class="accordion-list" id="appContainer">
                       <script id="appSW" type="text/x-handlebars-template">
-                      <li class="accordion-item">
+                        <li class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title"><a target="_blank" class="link external" href="{{cells.Web}}">{{cells.Nombre}}</a></div>
+                          </div>
+                        </li>
+                      <!--<li class="accordion-item">
                         <div class="accordion-item-toggle"><span><b>{{cells.Nombre}}</b><span></div>
                         <div class="accordion-item-content"><p>{{cells.Description}}</p>
                           <br>
-                          <a class="link external" href="{{cells.Web}}">Enlace</a>
+                          <a target="_blank" class="link external" href="{{cells.Web}}">Enlace</a>
                         <div class="block-footer"></div>
                       </div>
-                    </li>
+                    </li>-->
                         </script>
                     </ul>
                   </div>
-                </div>
+
               </div>
             </div>
 
           </div>
         </div>
       </div>
-      <div class="popup" id="baPU">
+      <div class="popup popup-tablet-fullscreen" id="baPU">
         <div class="view">
           <div class="page">
             <div class="navbar gradiente">
@@ -445,7 +628,7 @@
                     <script id="baSW" type="text/x-handlebars-template">
                       <li class="item-content">
                         <div class="item-inner">
-                          <div class="item-title"><a class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
+                          <div class="item-title"><a target="_blank" class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
                         </div>
                       </li>
                     </script>
@@ -457,7 +640,7 @@
           </div>
         </div>
       </div>
-      <div class="popup" id="irPU">
+      <div class="popup popup-tablet-fullscreen" id="irPU">
         <div class="view">
           <div class="page">
             <div class="navbar gradiente">
@@ -479,7 +662,7 @@
                     <script id="irSW" type="text/x-handlebars-template">
                       <li class="item-content">
                         <div class="item-inner">
-                          <div class="item-title"><a class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
+                          <div class="item-title"><a target="_blank" class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
                         </div>
                       </li>
                     </script>
@@ -492,7 +675,7 @@
           </div>
         </div>
       </div>
-      <div class="popup" id="sePU">
+      <div class="popup popup-tablet-fullscreen" id="sePU">
         <div class="view">
           <div class="page">
             <div class="navbar gradiente">
@@ -511,7 +694,7 @@
                     <script id="seSW" type="text/x-handlebars-template">
                       <li class="item-content">
                         <div class="item-inner">
-                          <div class="item-title"><a class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
+                          <div class="item-title"><a target="_blank" class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
                         </div>
                         <div class="item-inner">
                           <div class="chip color-red">
@@ -528,7 +711,7 @@
           </div>
         </div>
       </div>
-      <div class="popup" id="hdPU">
+      <div class="popup popup-tablet-fullscreen" id="hdPU">
         <div class="view">
           <div class="page">
             <div class="navbar gradiente">
@@ -550,7 +733,7 @@
                     <script id="hdSW" type="text/x-handlebars-template">
                       <li class="item-content">
                         <div class="item-inner">
-                          <div class="item-title"><a class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
+                          <div class="item-title"><a target="_blank" class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
                         </div>
                       </li>
                     </script>
@@ -562,12 +745,12 @@
           </div>
         </div>
       </div>
-      <!--<div class="popup" id="ilPU">
+      <div class="popup popup-tablet-fullscreen" id="evPU">
       <div class="view">
         <div class="page">
           <div class="navbar gradiente">
             <div class="navbar-inner">
-              <div class="title">Iniciativas Locales</div>
+              <div class="title">Eventos Culturales Gratuitos</div>
               <div class="right">
                 <a href="#" class="link popup-close">x</a>
               </div>
@@ -576,20 +759,21 @@
           <div class="page-content">
             <div class="block">
 
-              <form class="searchbar">
-                    <input type="search" id="searchSE" onkeyup="buscarIL()" placeholder="Buscar">
-              </form>
-              <div class="list">
-                <ul id="ilContainer">
-                  <script id="ilSW" type="text/x-handlebars-template">
-                  <li class="item-content">
-                    <div class="item-inner">
-                      <div class="item-title"><a class="link external" href="{{cells.Web}}">{{cells.Name}}</a></div>
+
+
+                <ul id="evContainer">
+                  <script id="evSW" type="text/x-handlebars-template">
+                  <li>
+                    <div class="card demo-card-header-pic">
+                      <div style="background-image:url({{cells.URL}})" class="card-header align-items-flex-end"></div>
+                      <div class="card-content card-content-padding">
+                        <p class="date">{{cells.Caption}}</p>
+                        </div>
                     </div>
                   </li>
                 </script>
                 </ul>
-              </div>
+
 
             </div>
           </div>
@@ -961,16 +1145,17 @@
   </div>
   <script>
 
-/*var myVar;
+var myVar;
 
 function cargarLoader() {
-    myVar = setTimeout(showPage, 2000);
+    myVar = setTimeout(showPage, 1000);
 }
 
 function showPage() {
   document.getElementById("loader").style.display = "none";
   document.getElementById("app").style.display = "block";
-}*/
+  document.getElementById('bodyb').style.background = "#fff"
+}
 
   function completada() {
     alert("Formulario Enviado");
@@ -993,14 +1178,13 @@ function showPage() {
   <!-- Map -->
   <script src="js/leaflet.js" charset="utf-8"></script>
   <script src="js/leaflet-sidebar.js" charset="utf-8"></script>
-  <script src="js/leaflet.markercluster.js" charset="utf-8"></script>
+
   <script src="js/papaparse.min.js" charset="utf-8"></script>
   <script src="js/geojson.min.js" charset="utf-8"></script>
   <script src="js/map.js" charset="utf-8"></script>
   <script src="js/handlebars.min.js" charset="utf-8"></script>
   <script src="js/sheetrock.min.js" charset="utf-8"></script>
-  <script src="js/jqgoogleforms.js" charset="utf-8"></script>
-  <script src="js/jqformvalidator.min.js" charset="utf-8"></script>
+
 
   <script src="js/data.js" charset="utf-8"></script>
 

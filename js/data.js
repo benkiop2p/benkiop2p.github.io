@@ -7,6 +7,7 @@ $(document).ready(function() {
   var onlineED = 'https://docs.google.com/spreadsheets/d/1gWxJ720bJNGzMA9OEJTK6xa44JEyfl5s1JeA95mF_jE/edit#gid=1369604528';
   var biblios = 'https://docs.google.com/spreadsheets/d/1gWxJ720bJNGzMA9OEJTK6xa44JEyfl5s1JeA95mF_jE/edit#gid=797437749';
   var app = 'https://docs.google.com/spreadsheets/d/1gWxJ720bJNGzMA9OEJTK6xa44JEyfl5s1JeA95mF_jE/edit#gid=994904731'
+  var eventos = 'https://docs.google.com/spreadsheets/d/1KEwwWzQxsitRhHSgkQIvZXMQO7Nki91CrMV4DaOTMBE/edit#gid=0'
 
   var hdTemplate = Handlebars.compile($('#hdSW').html())
   var seTemplate = Handlebars.compile($('#seSW').html())
@@ -15,7 +16,14 @@ $(document).ready(function() {
   var exchTemp = Handlebars.compile($('#exchSW').html())
   var userTemplate = Handlebars.compile($('#usrSW').html())
   var appTemplate = Handlebars.compile($('#appSW').html())
+  var evTemplate = Handlebars.compile($('#evSW').html())
 
+  $('#evContainer').sheetrock({
+    url: eventos,
+    query: "select A,B",
+    labels: ['Caption','URL'],
+    rowTemplate: evTemplate
+  })
 
   $('#appContainer').sheetrock({
     url: app,

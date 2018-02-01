@@ -1,81 +1,37 @@
 // Dom7
 
 // Framework7 App main instance
-var app = new Framework7()
-/*{
+var app = new Framework7(
+{
   root: '#app', // App root element
-  //id: 'io.framework7.testapp', // App bundle ID
   name: 'Benkio', // App name
-  theme: 'auto', // Automatic theme detection
-  // App root data
-  /*data: function () {
-    return {
-      user: {
-        firstName: 'John',
-        lastName: 'Doe',
-      },
-      // Demo products for Catalog section
-      products: [
-        {
-          id: '1',
-          title: 'Apple iPhone 8',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis.'
-        },
-        {
-          id: '2',
-          title: 'Apple iPhone 8 Plus',
-          description: 'Velit odit autem modi saepe ratione totam minus, aperiam, labore quia provident temporibus quasi est ut aliquid blanditiis beatae suscipit odio vel! Nostrum porro sunt sint eveniet maiores, dolorem itaque!'
-        },
-        {
-          id: '3',
-          title: 'Apple iPhone X',
-          description: 'Expedita sequi perferendis quod illum pariatur aliquam, alias laboriosam! Vero blanditiis placeat, mollitia necessitatibus reprehenderit. Labore dolores amet quos, accusamus earum asperiores officiis assumenda optio architecto quia neque, quae eum.'
-        },
-      ]
-    };
-  },*/
-// App root methods
-/*methods: {
-    helloWorld: function () {
-      app.dialog.alert('Hello World!');
-    },
-  },
-  // App routes
-  routes: routes
-})*/
+  theme: 'md' // Automatic theme detection
+
+})
 
 var $$ = Dom7
 
 
 // Init/Create views
-var peView = app.views.create('#view-pe', {
+var homeView = app.views.create('#home', {
   url: '/'
 })
-var usrView = app.views.create('#view-users', {
+var peView = app.views.create('#pencuentro', {
+  url: '/pencuentro/'
+})
+var usrView = app.views.create('#usrs', {
   url: '/usuarios/'
 })
-var hrView = app.views.create('#view-hr', {
+var hrView = app.views.create('#hrecursos', {
   url: '/herramientas/'
 })
-var icView = app.views.create('#view-ic', {
+var icView = app.views.create('#intercambios', {
   url: '/intercambios/'
 })
-var infoView = app.views.create('#view-info', {
-  url: '/info/'
+var infoView = app.views.create('#eventos', {
+  url: '/eventos/'
 })
-// Login Screen Demo
-/*$$('#my-login-screen .login-button').on('click', function () {
-  var username = $$('#my-login-screen [name="username"]').val();
-  var password = $$('#my-login-screen [name="password"]').val();
 
-  // Close login screen
-  app.loginScreen.close('#my-login-screen');
-
-  // Alert username and password
-  app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
-});*/
-
-console.log('lel')
 
 function buscar() {
   var input, filter, ul, li, a, i;
@@ -101,7 +57,7 @@ function buscarSE() {
   li = ul.getElementsByTagName('li');
   for (i = 0; i < li.length; i++) {
     a = li[i].getElementsByTagName("a")[0];
-    console.log(a.innerHTML.toUpperCase())
+    //console.log(a.innerHTML.toUpperCase())
     if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
       li[i].style.display = "";
     } else {
